@@ -1,0 +1,56 @@
+﻿# SDS.Diag 公开面基线（派生工件，勿手改）
+# 生成：Tools/DumpPublicSurface.ps1 -Write；校验：Tools/DumpPublicSurface.ps1 -Check
+# 差异即公开面变更：按《设计原则.md》§三 判定 L1 / L2 / L3。
+[type] ISDSResettable :: public interface ISDSResettable
+[type] SDS_CompatAdapterReport :: public sealed class SDS_CompatAdapterReport
+[type] SDS_CompatPatchReport :: public sealed class SDS_CompatPatchReport
+[type] SDS_CompatReportHub :: public static class SDS_CompatReportHub
+[type] SDS_Diag :: public static class SDS_Diag
+[type] SDS_SelfCheck :: public static class SDS_SelfCheck
+[type] SDS_StaticState :: public static class SDS_StaticState
+ISDSResettable :: void ResetStatics();
+SDS_CompatAdapterReport :: public bool detected;
+SDS_CompatAdapterReport :: public bool hasFailures;
+SDS_CompatAdapterReport :: public int appliedCount;
+SDS_CompatAdapterReport :: public int declaredCount;
+SDS_CompatAdapterReport :: public List<string> applied = new List<string>();
+SDS_CompatAdapterReport :: public List<string> failed = new List<string>();
+SDS_CompatAdapterReport :: public SDS_CompatAdapterReport()
+SDS_CompatAdapterReport :: public SDS_CompatAdapterReport(SDS_CompatAdapterReport other)
+SDS_CompatAdapterReport :: public string category;
+SDS_CompatAdapterReport :: public string detectedButBroken;
+SDS_CompatAdapterReport :: public string name;
+SDS_CompatAdapterReport :: public string packageId;
+SDS_CompatAdapterReport :: public string remark;
+SDS_CompatPatchReport :: public bool HasFailures
+SDS_CompatPatchReport :: public int AppliedCount
+SDS_CompatPatchReport :: public int DeclaredCount
+SDS_CompatPatchReport :: public List<string> applied = new List<string>();
+SDS_CompatPatchReport :: public List<string> failed = new List<string>();
+SDS_CompatPatchReport :: public SDS_CompatPatchReport(string modName) : this(modName, "第三方 Mod 兼容补丁")
+SDS_CompatPatchReport :: public SDS_CompatPatchReport(string modName, string category)
+SDS_CompatPatchReport :: public string category;
+SDS_CompatPatchReport :: public string modName;
+SDS_CompatPatchReport :: public void Applied(string hook)
+SDS_CompatPatchReport :: public void Missing(string hook, string reason)
+SDS_CompatReportHub :: public static bool Has(string name)
+SDS_CompatReportHub :: public static SDS_CompatAdapterReport[] Snapshot()
+SDS_CompatReportHub :: public static void LogAll()
+SDS_CompatReportHub :: public static void Register(string name, string packageId, bool detected, SDS_CompatPatchReport report, string remark = null, string detectedButBroken = null)
+SDS_CompatReportHub :: public static void Reset()
+SDS_Diag :: public static string Ctx(Map map = null, Pawn pawn = null, Thing thing = null, Job job = null, string extra = null)
+SDS_Diag :: public static void AssertAvailableWithinTotal(SDS_StockKey key, long total, long available)
+SDS_Diag :: public static void AssertTransactionStage(int transactionId, SDS_WithdrawEndState actual, SDS_WithdrawEndState expected, string stage)
+SDS_Diag :: public static void AssertTransactionTerminal(int transactionId, SDS_WithdrawEndState actual, string stage)
+SDS_Diag :: public static void ErrorOnce(string message, Exception exception)
+SDS_Diag :: public static void Fail(string reason, string context = null, Exception exception = null)
+SDS_Diag :: public static void Warn(string reason, string context = null, Exception exception = null)
+SDS_SelfCheck :: public static int Count
+SDS_SelfCheck :: public static void Register(ISDS_DiagnosticProvider provider)
+SDS_SelfCheck :: public static void Reset()
+SDS_SelfCheck :: public static void Run(bool verbose)
+SDS_SelfCheck :: public static void RunLedgerChecks()
+SDS_SelfCheck :: public static void RunLoadReport()
+SDS_StaticState :: public static int RegisteredCount
+SDS_StaticState :: public static int ResetAll()
+SDS_StaticState :: public static void Register(ISDSResettable item)

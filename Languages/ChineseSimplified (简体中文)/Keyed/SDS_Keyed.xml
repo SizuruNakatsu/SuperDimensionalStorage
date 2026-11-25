@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+    <SDS.Status.Online>在线</SDS.Status.Online>
+    <SDS.Status.Offline>离线</SDS.Status.Offline>
+
+    <!-- 首次进入存档时右侧弹出的操作指南通知信。 -->
+    <SDS.IntroNotice.Label>超维存储：操作指南</SDS.IntroNotice.Label>
+    <SDS.IntroNotice.Text>研究「超维基础技术」解锁建造「超维空间核心」锚定超维空间；研究「超维高级技术」解锁建造「超维空间锚点」在殖民地各处存取物品；研究「超维精密技术」解锁建造「超维空间稳固装置」提升超维空间容量。&#10;&#10;研究「超维精密技术」解锁「超维空间基础芯片」，殖民者植入后本人及附属机械体可在「超维空间核心」地图内随时存取超维空间库存；研究「超维高级精密技术」解锁「超维空间高级芯片」，殖民者植入后本人及附属机械体可在超维空间被锚定后随时随地存取超维空间库存，与其他殖民地贸易时可直接调用超维空间库存。&#10;&#10;右下角UI按「超维」（默认快捷键：C）打开超维空间面板，选中条目即可输出（默认快捷键：Q）或使用（默认快捷键：E），数量选择时确定（默认快捷键：Enter/鼠标中键）即可。&#10;&#10;MOD设置界面可自定义本mod自由度，包括不耗电、不受太阳耀斑影响、提高容量、将武器/装备强制虚拟化等。</SDS.IntroNotice.Text>
+
+    <SDS.JobReport.Deposit>正在把 {0} 存入超维空间。</SDS.JobReport.Deposit>
+    <SDS.JobReport.DepositPartial>正在把 {0} 存入超维空间（背包已满，剩余留在地面）。</SDS.JobReport.DepositPartial>
+    <SDS.JobReport.DepositBlocked>无法存入 {0}：背包已满。</SDS.JobReport.DepositBlocked>
+
+    <SDS.Window.NoGrid>超维空间不可用</SDS.Window.NoGrid>
+    <SDS.Window.NoGridHint>世界上没有已通电、未损坏的超维空间核心，超维空间当前不可用。</SDS.Window.NoGridHint>
+    <SDS.Window.StockEmpty>超维空间内暂无存储。</SDS.Window.StockEmpty>
+    <SDS.Window.SearchNoMatch>没有匹配的物品（可按物品名或类目名搜索）。</SDS.Window.SearchNoMatch>
+    <SDS.Window.PreservedTag>（保真）</SDS.Window.PreservedTag>
+    <SDS.Channel.VirtualTip>虚拟通道：只记录 def / 材质 / 品质 / 件数 / 堆平均 HP·腐烂；取出时按堆平均重建，逐件差异（如配料、毒、染色、充能、研究进度）不保留。</SDS.Channel.VirtualTip>
+    <SDS.Channel.PreservedTip>保真通道：账本持有真身，逐件状态（配料、毒、腐烂、染色、充能、研究进度等）原样保留，取出时交付真身。</SDS.Channel.PreservedTip>
+    <SDS.Window.AvailableSuffix>（可用 {0}）</SDS.Window.AvailableSuffix>
+    <SDS.Window.Uncategorized>未分类</SDS.Window.Uncategorized>
+    <SDS.Window.UnresolvedHeader>未解析条目 {0} 类：def / Mod 缺失，账目已保留，当前不可取用</SDS.Window.UnresolvedHeader>
+    <SDS.Window.RetryResolve>重试解析</SDS.Window.RetryResolve>
+    <SDS.Window.RetryResolveDone>重试解析完成：仍有 {0} 类无法解析。</SDS.Window.RetryResolveDone>
+
+    <SDS.Window.OutputButton>输出</SDS.Window.OutputButton>
+    <SDS.Window.BigTitle>超维空间存储</SDS.Window.BigTitle>
+    <SDS.Window.GridStatusOn>超维空间可用　品类 {0}/{1}</SDS.Window.GridStatusOn>
+    <SDS.Window.GridStatusOff>超维空间不可用</SDS.Window.GridStatusOff>
+    <SDS.Window.OutputNoKey>请先在上方列表里选中一行。</SDS.Window.OutputNoKey>
+    <SDS.Window.OutputSelected>已选：{0}（最大可输出 {1}）</SDS.Window.OutputSelected>
+    <SDS.Window.OutputAmount>数量</SDS.Window.OutputAmount>
+    <SDS.Window.OutputAll>全部</SDS.Window.OutputAll>
+    <SDS.Window.OutputConfirm>确定</SDS.Window.OutputConfirm>
+    <SDS.Window.OutputConfirmTip>Enter 或鼠标中键确认；ESC 取消。</SDS.Window.OutputConfirmTip>
+
+    <SDS.Window.FilterHint>存入筛选请到「超维空间核心」或「超维空间锚点」的「存入筛选」页签里配置；所有建筑共用同一套标准，改一处即全生效。</SDS.Window.FilterHint>
+    <SDS.Tab.DepositFilter>存入筛选</SDS.Tab.DepositFilter>
+    <SDS.Tab.GlobalPriority>全局存储优先级（所有端点共用）</SDS.Tab.GlobalPriority>
+    <SDS.Tab.IgnorePriorityOn>已开启「忽略优先级」：只要能进就无条件存入。</SDS.Tab.IgnorePriorityOn>
+    <SDS.Tab.PriorityHint>只有核心能调节此值；锚点与带芯片小人共用同一结果。</SDS.Tab.PriorityHint>
+    <SDS.Tab.ChannelHint>通道由规则自动判定：制成品 / 原料 / 食物 / 块堆默认虚拟；任务 / 遗物 / 艺术 / 研究 / 内容物 / 染色 / 充能等保真。本页只配置“能否存入”，不改变通道。</SDS.Tab.ChannelHint>
+
+    <SDS.Target.Core>{0}（核心）</SDS.Target.Core>
+    <SDS.Target.Port>{0}（锚点）</SDS.Target.Port>
+    <SDS.Target.Pawn>植入体小人（{0}）</SDS.Target.Pawn>
+    <SDS.Target.Reserved>预留端口</SDS.Target.Reserved>
+
+    <SDS.Chip.UseLabel>植入 {0}</SDS.Chip.UseLabel>
+    <SDS.Chip.HigherAlreadyInstalled>该小人已植入更高等级的芯片。</SDS.Chip.HigherAlreadyInstalled>
+    <SDS.Chip.MechCannotInstall>机械体不能自行植入芯片，其权限完全继承自主人。</SDS.Chip.MechCannotInstall>
+    <SDS.Chip.DepositItem>存入超维空间（{0}）</SDS.Chip.DepositItem>
+    <SDS.Chip.DepositInventory>存入背包物品</SDS.Chip.DepositInventory>
+    <SDS.Chip.DepositInventoryDesc>把背包里所有符合「超维空间存入筛选」的物品存入超维空间。</SDS.Chip.DepositInventoryDesc>
+    <SDS.Chip.NothingToDeposit>背包里没有可存入的物品（筛选或品类上限）。</SDS.Chip.NothingToDeposit>
+    <SDS.Chip.NoPort>该小人没有可用的超维端口。</SDS.Chip.NoPort>
+    <SDS.Chip.Deposited>已存入 {0} 件物品。</SDS.Chip.Deposited>
+    <SDS.Chip.DepositItemDone>已存入超维空间：{0} ×{1}</SDS.Chip.DepositItemDone>
+    <SDS.Chip.DepositItemFailed>未能存入 {0}（目标不可达、不在超维空间存入筛选内，或该品类数已达上限）。</SDS.Chip.DepositItemFailed>
+    <SDS.Chip.DepositPartial>已存入超维空间：{0} ×{1}；背包放不下，剩余 {2} 留在地面。</SDS.Chip.DepositPartial>
+
+    <SDS.Output.NoKey>尚未选择品类。</SDS.Output.NoKey>
+    <SDS.Output.NoGrid>超维空间不可用。</SDS.Output.NoGrid>
+    <SDS.Output.NoTarget>尚未选择输出目标。</SDS.Output.NoTarget>
+    <SDS.Output.PawnReserved>植入体小人端口在本版本为预留，尚未启用。</SDS.Output.PawnReserved>
+    <SDS.Output.TargetGone>所选目标已不存在。</SDS.Output.TargetGone>
+    <SDS.Output.Insufficient>超维空间内数量不足，未输出。</SDS.Output.Insufficient>
+    <SDS.Output.Unresolved>“{0}”的 def 当前无法解析（Mod 缺失 / 改名 / XML 加载失败）。账目已保留，修复后自动恢复。</SDS.Output.Unresolved>
+    <SDS.Output.RebuildFailed>“{0}”无法重建为实物（MakeThing 失败）；账目未扣除，请查看日志。</SDS.Output.RebuildFailed>
+    <SDS.Output.Forbidden>这一类已在超维空间中被禁用，未输出；先点击列表行尾的锁形按钮允许。</SDS.Output.Forbidden>
+    <SDS.Forbidden.CannotUse>这一类已在超维空间中被禁用（不参与生产与取用）；先点击列表行尾的锁形按钮允许。它仍会计入财富并可交易。</SDS.Forbidden.CannotUse>
+    <SDS.Output.Done>已输出 {0} ×{1}。</SDS.Output.Done>
+    <SDS.Output.CannotPlace>这里无法放置该建筑（地形或阻挡不满足）。</SDS.Output.CannotPlace>
+    <SDS.Output.InstallStarted>已开始安装 {0}：真身已放到端点，等小人搬运并安装。</SDS.Output.InstallStarted>
+    <SDS.Output.InstallFailed>安装失败，物品已退回超维空间。</SDS.Output.InstallFailed>
+
+    <SDS.Preserved.NoAccess>没有可达的超维空间端点，无法把保真物品取到地图上。</SDS.Preserved.NoAccess>
+    <SDS.GrowthVat.ImplantEmbryo>从超维空间植入胚胎</SDS.GrowthVat.ImplantEmbryo>
+    <SDS.GrowthVat.ImplantEmbryoDesc>把超维空间里保存的人类胚胎取出并放入生长舱（约 {0}）。</SDS.GrowthVat.ImplantEmbryoDesc>
+    <SDS.GrowthVat.NoEmbryo>超维空间里没有人类胚胎。</SDS.GrowthVat.NoEmbryo>
+
+    <SDS.Window.TitleTip>打开超维空间面板：查看数据存储、配置全局存入筛选，并把存储输出到建筑或植入体小人。</SDS.Window.TitleTip>
+    <SDS.Button.Label>超维</SDS.Button.Label>
+
+    <!-- SDS.Job.* 的 15 条已删除：JobDef.reportString 是 [MustTranslate] 字段，
+         中文直接写在 Defs/SDS_JobDefs.xml 里，英文放 Languages/English/DefInjected/JobDef/SDS_JobDefs.xml。
+         放 Keyed 会变成死键（渲染路径从不调用 .Translate()，小人状态条会直接显示键名）。 -->
+
+    <SDS.Trade.VirtualStorageChanged>超维空间里的「{0}」可用量不足（当前可用 {1}），本次交易被取消，请重新确认交易内容。</SDS.Trade.VirtualStorageChanged>
+    <SDS.Deposit.CapacityFull>超维空间品类已满（{0}/{1}），剩余物品未能存入；请取出一些品类或提高容量上限。</SDS.Deposit.CapacityFull>
+    <SDS.Caravan.NeedsOutputPoint>只有当地存在可用的超维空间端点（通电的超维空间核心 / 超维空间锚点）时，才能携带超维空间里的物资出发。</SDS.Caravan.NeedsOutputPoint>
+    <SDS.Caravan.InstantUnsupported>瞬间编成不支持携带超维空间里的物资。</SDS.Caravan.InstantUnsupported>
+    <SDS.Caravan.NotEnoughStock>「{0}」在超维空间里的可用量已不足（可能已被另一支远行队或交易先取走），本次出发已取消，请重新确认清单。</SDS.Caravan.NotEnoughStock>
+
+    <SDS.Settings.Category>超维存储SuperDimensionalStorage</SDS.Settings.Category>
+    <SDS.Settings.GridCapacity>超维空间初始容量：{0}（可自定义范围 {1}–{2}）</SDS.Settings.GridCapacity>
+    <SDS.Settings.CapacityUsage>当前品类：{0}/{1}（调低容量不会驱逐已有品类，只拒绝新品类）</SDS.Settings.CapacityUsage>
+    <SDS.Settings.CapacityPerArray>每个稳固装置的容量增加：{0}（可自定义范围 {1}–{2}）</SDS.Settings.CapacityPerArray>
+    <SDS.Settings.CorePower>超维空间核心耗电：{0}W（可自定义范围 {1}–{2}）</SDS.Settings.CorePower>
+    <SDS.Settings.ArrayPower>超维空间稳固装置耗电：{0}W（可自定义范围 {1}–{2}）</SDS.Settings.ArrayPower>
+    <SDS.Settings.PortPower>超维空间锚点耗电：{0}W（可自定义范围 {1}–{2}）</SDS.Settings.PortPower>
+    <SDS.Settings.ZeroMeansNoPower>注：耗电设为 0 表示不耗电（不需要接入电网）。</SDS.Settings.ZeroMeansNoPower>
+    <SDS.Settings.ExcludeFromWealth>超维空间存储不计入殖民地财富（默认关闭＝计入）</SDS.Settings.ExcludeFromWealth>
+    <SDS.Settings.PlayerFactionOnlyAccess>仅玩家派系可取用超维库存（默认关闭）</SDS.Settings.PlayerFactionOnlyAccess>
+    <SDS.Settings.PlayerFactionOnlyAccess.Title>确认仅玩家派系可取用</SDS.Settings.PlayerFactionOnlyAccess.Title>
+    <SDS.Settings.PlayerFactionOnlyAccess.Confirm>开启后，野生动物、袭击者、访客、囚犯与任务寄居者不能从超维库存取出、携带、穿戴、装备、进食或用药；玩家殖民者、机械体与殖民地动物不受影响。此设置只限制取用，不改变库存数量、财富、资源条或可见性。是否开启？</SDS.Settings.PlayerFactionOnlyAccess.Confirm>
+    <SDS.Settings.HighestStoragePriority>超维存储忽略优先级</SDS.Settings.HighestStoragePriority>
+    <SDS.Settings.HighestStoragePriority.Title>确认最高优先级</SDS.Settings.HighestStoragePriority.Title>
+    <SDS.Settings.HighestStoragePriority.Confirm>开启后，超维存储视为所有可存实物的最高优先级储存。&#10;&#10;· 储存区 / 储存建筑中可存入的物品会被自动搬入超维空间。&#10;· 与「允许优先级流出」互斥：开启本项会关闭流出。&#10;· 运输舱、料斗、棺材等容器内部的物品不在覆盖范围内。&#10;· 关闭本项后恢复原版优先级行为。&#10;&#10;是否开启？</SDS.Settings.HighestStoragePriority.Confirm>
+    <SDS.Settings.AllowPriorityOutflow>允许优先级流出（默认关闭）</SDS.Settings.AllowPriorityOutflow>
+    <SDS.Settings.AllowPriorityOutflow.Title>确认允许优先级流出</SDS.Settings.AllowPriorityOutflow.Title>
+    <SDS.Settings.AllowPriorityOutflow.Confirm>开启后，超维库存会重新进入原版搬运候选：只有当存在严格更高优先级且允许该物品的储存容器时，殖民者才会把库存搬运流出。&#10;&#10;· 只消耗可用量（总量 − 预留），交易 / 编成 / 账单预留的物品不会被流出。&#10;· 目的地格 / 容器与镜像 Job 的预留仍按原版规则。&#10;· 与「最高优先级」互斥：开启后会关闭「最高优先级」。&#10;· 最多 30 tick 后生效；关闭后最多 30 tick 移除候选。&#10;· 只对玩家派系生效。&#10;&#10;是否开启？</SDS.Settings.AllowPriorityOutflow.Confirm>
+    <SDS.Settings.ForceGearVirtual>武器/装备强制虚拟化</SDS.Settings.ForceGearVirtual>
+    <SDS.Settings.ForceGearVirtualDesc>默认关闭；开启后普通武器/衣物不再因艺术/颜色/风格/充能进入保真模式。</SDS.Settings.ForceGearVirtualDesc>
+    <SDS.Settings.ForceGearVirtual.Title>确认强制虚拟化</SDS.Settings.ForceGearVirtual.Title>
+    <SDS.Settings.ForceGearVirtual.Confirm>这会立即把库存中可虚拟化的武器/衣物转换为虚拟条目，并永久丢失颜色、风格、艺术（含已生成的标题/作者）与护盾充能；护盾带取出时会重新充满。此操作不可撤销，关闭开关也不会恢复。只转换普通物品；任务物、圣物、人格武器、独特武器、生成名、生物锁、尸衣、燃料、CE 弹匣仍保持保真。请先关闭交易、编成、装载窗口。是否继续？</SDS.Settings.ForceGearVirtual.Confirm>
+    <SDS.Settings.ForceGearVirtual.ConfirmNoGame>当前不在游戏内：不会转换任何库存，读档后也不会自动转换；需要在存档内重新开启或把物品取出后重新存入。是否开启？</SDS.Settings.ForceGearVirtual.ConfirmNoGame>
+    <SDS.Settings.ForceGearVirtual.Done>已强制虚拟化 {0} 件武器/衣物。</SDS.Settings.ForceGearVirtual.Done>
+    <SDS.Settings.ForceGearVirtual.None>没有可转换的保真武器/衣物。</SDS.Settings.ForceGearVirtual.None>
+    <SDS.Settings.ForceGearVirtual.Blocked>请先关闭交易、编成或装载窗口，再开启强制虚拟化。</SDS.Settings.ForceGearVirtual.Blocked>
+    <SDS.Settings.ResetDefaults>默认</SDS.Settings.ResetDefaults>
+    <SDS.Settings.SeparateQuality>按品质分开计算品类</SDS.Settings.SeparateQuality>
+    <SDS.Settings.SeparateStuff>按材质分开计算品类</SDS.Settings.SeparateStuff>
+    <SDS.Settings.SeparateDesc>以上两项只影响「品类数量上限」的计数口径。</SDS.Settings.SeparateDesc>
+    <SDS.Window.OutputRecords>记录（选择要输出的那一档材质／品质）：</SDS.Window.OutputRecords>
+
+    <SDS.Settings.Hotkeys>快捷键</SDS.Settings.Hotkeys>
+    <SDS.Settings.HotkeyOpen>打开超维空间</SDS.Settings.HotkeyOpen>
+    <SDS.Settings.HotkeyOutput>输出选中的行</SDS.Settings.HotkeyOutput>
+    <SDS.Settings.HotkeyUse>使用选中的行</SDS.Settings.HotkeyUse>
+    <SDS.Settings.HotkeySet>设置</SDS.Settings.HotkeySet>
+    <SDS.Settings.HotkeyClear>清除</SDS.Settings.HotkeyClear>
+    <SDS.Settings.HotkeyReset>快捷键恢复默认</SDS.Settings.HotkeyReset>
+    <SDS.Settings.HotkeyNone>无</SDS.Settings.HotkeyNone>
+    <SDS.Settings.HotkeyCaptureTitle>设置「{0}」的快捷键</SDS.Settings.HotkeyCaptureTitle>
+    <SDS.Settings.HotkeyCaptureHint>请按一个键。ESC = 无快捷键；Enter 保留给确认。</SDS.Settings.HotkeyCaptureHint>
+    <SDS.Settings.HotkeyCancel>取消</SDS.Settings.HotkeyCancel>
+    <SDS.Settings.HotkeyConflict>该键已被「{0}」使用；两者会同时响应。</SDS.Settings.HotkeyConflict>
+    <SDS.Settings.HotkeyDuplicate>该键已用于另一个超维快捷键。</SDS.Settings.HotkeyDuplicate>
+    <SDS.Settings.HotkeyNoModifiers>不支持组合键，请按单个键。</SDS.Settings.HotkeyNoModifiers>
+    <SDS.Settings.HotkeyModifierOnly>修饰键不能单独绑定，请按一个普通键。</SDS.Settings.HotkeyModifierOnly>
+    <SDS.Settings.HotkeyReserved>Enter 保留给确认，不能绑定。</SDS.Settings.HotkeyReserved>
+    <SDS.Settings.HotkeyNote>建造模式下 C/Q 都归原版；Q 仅在侧边栏打开且选中行时优先。快捷键保存在原版键盘设置中，可与「选项 → 键盘」同步修改。</SDS.Settings.HotkeyNote>
+
+    <SDS.Window.HotkeyHint>快捷键：{0} 开关 · {1} 输出 · {2} 使用</SDS.Window.HotkeyHint>
+    <SDS.Window.CapacityBar>品类 {0}/{1}</SDS.Window.CapacityBar>
+    <SDS.Window.OutputButtonSelected>输出：{0}</SDS.Window.OutputButtonSelected>
+    <SDS.Window.UseButton>使用</SDS.Window.UseButton>
+
+    <SDS.Install.Title>安装：{0}（固定 1 件）</SDS.Install.Title>
+    <SDS.Install.Records>记录（选择要安装的材质／品质）：</SDS.Install.Records>
+    <SDS.Install.Confirm>开始放置</SDS.Install.Confirm>
+    <SDS.Install.ConfirmTip>Enter 或鼠标中键确认；确认后进入放置模式，右键或 ESC 取消不会取出物品。</SDS.Install.ConfirmTip>
+
+    <SDS.Use.Title>使用：{0}（固定 1 件）</SDS.Use.Title>
+    <SDS.Use.Records>记录（选择要使用的材质／品质）：</SDS.Use.Records>
+    <SDS.Use.Confirm>使用</SDS.Use.Confirm>
+    <SDS.Use.ConfirmTip>Enter 或鼠标中键确认；ESC 取消。只取出 1 件。</SDS.Use.ConfirmTip>
+    <SDS.Use.NoStock>超维空间里没有这件物品。</SDS.Use.NoStock>
+    <SDS.Use.Unresolved>“{0}”的 def 当前无法解析（Mod 缺失 / 改名 / XML 加载失败）；账目已保留，修复后自动恢复。</SDS.Use.Unresolved>
+    <SDS.Use.NotPawn>请选择一个殖民者（当前点的是建筑 / 地面 / 物品）。</SDS.Use.NotPawn>
+    <SDS.Use.NotEligible>该目标不能使用物品（需要玩家殖民地的人形小人）。</SDS.Use.NotEligible>
+    <SDS.Use.NoPort>该小人没有可用的超维空间芯片，无法就地取出。</SDS.Use.NoPort>
+    <SDS.Use.NoPlace>无法把物品放到该小人脚下（周围没有空位）。</SDS.Use.NoPlace>
+    <SDS.Use.NotUsable>该物品不能直接使用。</SDS.Use.NotUsable>
+    <SDS.Use.Blocked>无法使用「{0}」：{1}</SDS.Use.Blocked>
+    <SDS.Use.TaskJob>「{0}」不是使用项（原版给出的是任务 {1}），已放回超维空间。</SDS.Use.TaskJob>
+    <SDS.Use.RefundFailed>放回超维空间失败，「{0}」已留在地面。</SDS.Use.RefundFailed>
+
+</LanguageData>

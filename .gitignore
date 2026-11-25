@@ -1,0 +1,23 @@
+# ===== Build artifacts (not tracked) / 构建产物（不入库） =====
+[Bb]in/
+[Oo]bj/
+
+# Note: Assemblies/ (compiled mod DLLs) is tracked on purpose — the repo ships
+# ready-to-use builds. Remove the folder to build from Source/ instead.
+# 说明：Assemblies/（编译好的 MOD DLL）有意入库，随仓库提供现成构建；
+# 若希望自行编译，可删除该目录并用 Source/ 构建。
+
+# ===== IDE / tooling / 开发工具 =====
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# ===== Tests / 测试 =====
+TestResults/
+*.coverage
+
+# ===== OS / 系统 =====
+Thumbs.db
+.DS_Store

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>超维存储SuperDimensionalStorage</name>
+    <author>中津静流</author>
+    <packageId>Sizuru.SuperDimensionalStorage</packageId>
+    <supportedVersions>
+        <li>1.7</li>
+    </supportedVersions>
+    <modDependencies>
+        <li>
+            <packageId>brrainz.harmony</packageId>
+            <displayName>Harmony</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+        </li>
+    </modDependencies>
+    <loadAfter>
+        <li>brrainz.harmony</li>
+        <li>Mehni.PickUpAndHaul</li>
+        <li>CETeam.CombatExtended</li>
+        <li>KindSeal.UFLI</li>
+        <li>natsuki.manipulatorbeam</li>
+        <li>XiyueYM.MiliraExpandedXY</li>
+        <li>LongRange.CeleTech.ShuttleExtension</li>
+        <li>Natsuki.ProjectE</li>
+        <li>VersatranZeroOne.serval</li>
+    </loadAfter>
+    <description>
+本mod由AI辅助完成，是一类轻量化数字化存储mod，旨在尽可能贴近原版逻辑＋尽可能兼容更多mod＋方便存储。
+作者深受存储类mod功能不足、功能冗余、bug较多、兼容性差等困扰，于是自学RimWorld mod制作；本mod也旨在解决这些痛点难点。
+
+本mod设计理念为所有超维空间核心、超维空间锚点、携带超维空间芯片的殖民者、主人是携带超维空间芯片殖民者的机械体，皆共享一个超大容量的超维空间。
+无需手动物化物体，原版所有机制均可看见超维空间库存，本mod解决了原版内容以及调用原版API第三方MOD对虚拟物资不可见的问题。
+
+对部分第三方mod专门兼容清单——「Pick Up And Haul」＋「Combat Extended」＋「联合轻工家具拓展-UF Light Industries Furniture」＋「牵引光束搬运器Manipulator Beam Emitter」＋「米莉拉扩展-未来科技Milira Expanded - Future Technology」＋「天工模块化穿梭机 CeleTech Shuttle Extension」＋「ProjectE 等价交换」＋「VC载具框架VersatranZeroOne」。
+兼容性申明——所有严格使用原版函数API的mod；所有非全自动的第三方mod工作台。本mod制定了公共API，允许第三方mod使用超维空间库存。
+
+经过两轮重构，本mod收敛了原版“看的见”“读的准”“找得到”“拿得到”“存的到”这五条路径的逻辑链；按照原版函数的API进行补丁，与具体工作类型、具体工作台清单完全解耦。
+
+欢迎各位积极反馈bug与未适配mod，反馈格式——请带上录屏/详细说明＋mod名称＋报错日志，发送至作者本人邮箱——sizuru12395@qq.com。翔实证据发送至邮箱，是本mod唯一官方快速反馈渠道。
+
+感谢“PSIONIC海豹”提供的美术支持。
+——————————————————————————————————————————————————————————
+This mod was completed with AI assistance. It is a lightweight digital storage mod aimed at staying as close to vanilla logic as possible, being compatible with as many mods as possible, and making storage convenient.
+The author was troubled by storage mods’ insufficient features, redundant features, numerous bugs, and poor compatibility, so they taught themselves RimWorld modding; this mod is also intended to solve these pain points and difficulties.
+
+The design philosophy of this mod is that all Hyperdimensional Space Cores, Hyperdimensional Space Anchors, colonists carrying a Hyperdimensional Space Chip, and mechanoids whose owner is a colonist carrying a Hyperdimensional Space Chip all share one ultra-large-capacity Hyperdimensional Space.
+There is no need to manually materialize objects; all vanilla mechanics can see the Hyperdimensional Space inventory. This mod solves the problem that vanilla content and third-party mods calling vanilla APIs cannot see virtual supplies.
+
+Dedicated compatibility list for some third-party mods—「Pick Up And Haul」＋「Combat Extended」＋「联合轻工家具拓展-UF Light Industries Furniture」＋「牵引光束搬运器Manipulator Beam Emitter」＋「米莉拉扩展-未来科技Milira Expanded - Future Technology」＋「天工模块化穿梭机 CeleTech Shuttle Extension」＋「ProjectE 等价交换」＋「VC载具框架VersatranZeroOne」.
+Compatibility statement—all mods that strictly use vanilla function APIs; all non-fully-automatic third-party mod workbenches. This mod provides a public API that allows third-party mods to use the Hyperdimensional Space inventory.
+
+After two rounds of refactoring, this mod has consolidated the logic chains of the five vanilla paths: “can be seen”, “read accurately”, “can be found”, “can be taken”, and “can be stored”; it patches according to the APIs of vanilla functions and is completely decoupled from specific work types and specific workbench lists.
+
+Everyone is welcome to actively report bugs and unadapted mods. Feedback format—please include a screen recording/detailed description + mod name + error log, and send it to the author’s personal email—sizuru12395@qq.com. Sending detailed evidence to the email is the only official fast feedback channel for this mod.
+
+Thanks to “PSIONIC海豹” for providing art support.    </description>
+</ModMetaData>

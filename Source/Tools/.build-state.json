@@ -1,0 +1,32 @@
+{
+    "globalHash":  "6AF260549505F185E5F22A3CA6A373177F8DF701AB9D7405A5CB5D0723F652F4",
+    "modules":  {
+                    "SDS.Diag":  {
+                                     "dllHash":  "EF6C515B454DD6A6E09048138D0758321FBE6C0945B0B7063337A94ED6C93DB7",
+                                     "sourceHash":  "69844D78C69E539304EB0D9AC1EBE173AFAF1742732DB0AED128320B675EAA59",
+                                     "publicSurfaceHash":  "BE72344A11B3C3D1BC32844B98566F2DADFB3BF470425EC1FC640E0D75609251"
+                                 },
+                    "SDS.Contracts":  {
+                                          "dllHash":  "2C2B7F3AE4DD18A6547A97A3928A18ED5064473F7D402EBF0747A682AA72A20F",
+                                          "sourceHash":  "81B609CE4686032B12C3B96E4DAD36B56D0CB84C834864CD5ABD96C3E64AA15F",
+                                          "publicSurfaceHash":  "7AFE8B4927E5484FF6D90F1CB7FCAB2EDBB2F797E7E46530B6D057DB193DBED2"
+                                      },
+                    "SDS.Core":  {
+                                     "dllHash":  "7D9F01DFAEF081D3D2CDFD025BCA8E8051F557A0D0BA4897D9A2987B8CE32DC6",
+                                     "sourceHash":  "7D7508D445545F87EE5119C88269D742FED38A19B62DFCF04AFDBC912527FBA1",
+                                     "publicSurfaceHash":  "BE7B7300D0DEA3F4B955DDBC46386B6F5F78DD69DFCFE34B4F88261E91BA991F"
+                                 },
+                    "SDS.Rules":  {
+                                      "dllHash":  "CBB9B32D81DA00253A07731C6F773AFB2F711BF19142D052D952F7DCF670D170",
+                                      "sourceHash":  "0773C0ECCEC48F42E9521E92F656EE2EE5F6C121A23D4340218F3C8E40CEA853",
+                                      "publicSurfaceHash":  "92CDAA917CC353506297121A42EC48203CDA2FC870F438C8959458FE4D3B3DA0"
+                                  },
+                    "SDS.Vanilla":  {
+                                        "dllHash":  "92A02827777B01496EC0EDC184EB19696775FEADD28812800BBAB584B53CE678",
+                                        "sourceHash":  "E7EA95852742111647660DBD34FD4333C09A8A0DD2A5A8CF118FEFB514F35DB2",
+                                        "publicSurfaceHash":  "CE9DC234F4DB3A314F830EADF14044AA9BDB65BD2DD37ABAA15E15FB04E71475"
+                                    }
+                },
+    "version":  1,
+    "gameDir":  "E:\\Steam\\steamapps\\common\\RimWorld"
+}

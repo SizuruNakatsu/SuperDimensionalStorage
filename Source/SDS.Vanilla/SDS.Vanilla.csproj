@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>SDS.Vanilla</AssemblyName>
+    <SdsHarmonyRef>true</SdsHarmonyRef>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SDS.Contracts\SDS.Contracts.csproj" />
+    <ProjectReference Include="..\SDS.Diag\SDS.Diag.csproj" />
+    <ProjectReference Include="..\SDS.Core\SDS.Core.csproj" />
+    <ProjectReference Include="..\SDS.Rules\SDS.Rules.csproj" />
+  </ItemGroup>
+
+</Project>

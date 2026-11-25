@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>SDS.Rules</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SDS.Contracts\SDS.Contracts.csproj" />
+    <ProjectReference Include="..\SDS.Diag\SDS.Diag.csproj" />
+    <ProjectReference Include="..\SDS.Core\SDS.Core.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <!-- 独立科技类目：超维存储 -->
+    <ResearchTabDef>
+        <defName>SDS_SuperStorage</defName>
+        <label>超维存储</label>
+        <generalTitle>超维存储</generalTitle>
+        <generalDescription>推进这些研究项目以解锁超维存储的建筑与技术。</generalDescription>
+        <visibleByDefault>true</visibleByDefault>
+        <minMonolithLevelVisible>-1</minMonolithLevelVisible>
+    </ResearchTabDef>
+
+</Defs>

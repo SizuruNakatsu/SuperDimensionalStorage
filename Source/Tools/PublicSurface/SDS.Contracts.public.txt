@@ -1,0 +1,296 @@
+﻿# SDS.Contracts 公开面基线（派生工件，勿手改）
+# 生成：Tools/DumpPublicSurface.ps1 -Write；校验：Tools/DumpPublicSurface.ps1 -Check
+# 差异即公开面变更：按《设计原则.md》§三 判定 L1 / L2 / L3。
+[type] ISDS_DeliverySink :: public interface ISDS_DeliverySink
+[type] ISDS_DepositFilter :: public interface ISDS_DepositFilter
+[type] ISDS_DepositJobs :: public interface ISDS_DepositJobs
+[type] ISDS_DiagnosticProvider :: public interface ISDS_DiagnosticProvider
+[type] ISDS_DisplayQuery :: public interface ISDS_DisplayQuery
+[type] ISDS_MedicalCarePolicy :: public interface ISDS_MedicalCarePolicy
+[type] ISDS_MirrorPhysical :: public interface ISDS_MirrorPhysical
+[type] ISDS_MirrorQuery :: public interface ISDS_MirrorQuery
+[type] ISDS_Port :: public interface ISDS_Port
+[type] ISDS_PortProvider :: public interface ISDS_PortProvider
+[type] ISDS_PrioritySource :: public interface ISDS_PrioritySource
+[type] ISDS_ReclaimWorld :: public interface ISDS_ReclaimWorld
+[type] ISDS_TransportLoadSink :: public interface ISDS_TransportLoadSink
+[type] ISDSCompatAdapter :: public interface ISDSCompatAdapter
+[type] SDS_ApiCaller :: public struct SDS_ApiCaller
+[type] SDS_ApiResultCode :: public enum SDS_ApiResultCode
+[type] SDS_ApiStockInfo :: public struct SDS_ApiStockInfo
+[type] SDS_CompatGates :: public static class SDS_CompatGates
+[type] SDS_Config :: public static class SDS_Config
+[type] SDS_EndpointDecision :: public struct SDS_EndpointDecision
+[type] SDS_EndpointOp :: public enum SDS_EndpointOp
+[type] SDS_EndpointQuery :: public struct SDS_EndpointQuery
+[type] SDS_HediffDefOf :: public static class SDS_HediffDefOf
+[type] SDS_Host :: public static class SDS_Host
+[type] SDS_HostSlots :: public sealed class SDS_HostSlots
+[type] SDS_JobDefOf :: public static class SDS_JobDefOf
+[type] SDS_MedicalGate :: public static class SDS_MedicalGate
+[type] SDS_PreserveHooks :: public static class SDS_PreserveHooks
+[type] SDS_ReadVersions :: public struct SDS_ReadVersions
+[type] SDS_ReclaimOutcome :: public enum SDS_ReclaimOutcome
+[type] SDS_ReclaimPolicy :: public enum SDS_ReclaimPolicy
+[type] SDS_ReclaimSave :: public sealed class SDS_ReclaimSave : IExposable
+[type] SDS_Reservation :: public class SDS_Reservation : IExposable
+[type] SDS_ReturnFallback :: public enum SDS_ReturnFallback
+[type] SDS_Settings :: public class SDS_Settings : ModSettings
+[type] SDS_SidebarUIState :: public class SDS_SidebarUIState : IExposable
+[type] SDS_StockChannel :: public enum SDS_StockChannel
+[type] SDS_StockEntry :: public class SDS_StockEntry : IExposable
+[type] SDS_StockKey :: public class SDS_StockKey : IExposable, IEquatable<SDS_StockKey>
+[type] SDS_StockVitals :: public sealed class SDS_StockVitals
+[type] SDS_StructureFact :: public struct SDS_StructureFact
+[type] SDS_StructureKind :: public enum SDS_StructureKind
+[type] SDS_SupplyFailure :: public enum SDS_SupplyFailure
+[type] SDS_TransportLoadSave :: public sealed class SDS_TransportLoadSave : IExposable
+[type] SDS_WithdrawDeliveryPolicyDef :: public class SDS_WithdrawDeliveryPolicyDef : Def
+[type] SDS_WithdrawEndState :: public enum SDS_WithdrawEndState
+[type] SDS_WithdrawMode :: public enum SDS_WithdrawMode
+[type] SDS_WithdrawPlan :: public sealed class SDS_WithdrawPlan
+[type] SDS_WithdrawQuery :: public sealed class SDS_WithdrawQuery
+ISDS_DeliverySink :: bool TryGiveToPawn(Thing thing, Pawn pawn, bool preferCarry);
+ISDS_DeliverySink :: bool TryPlace(Thing thing, Map map, IntVec3 cell);
+ISDS_DepositFilter :: bool Allows(Thing thing);
+ISDS_DepositJobs :: bool CanTakeCandidate(Pawn pawn, Thing thing, bool forced);
+ISDS_DepositJobs :: bool IsManualDepositAvailable(Pawn pawn);
+ISDS_DepositJobs :: Job TryMakeFromInventory(Pawn pawn, IList<Thing> items);
+ISDS_DepositJobs :: Job TryMakeJob(Pawn pawn, Thing thing, bool forced, Job vanillaJob, bool multi);
+ISDS_DiagnosticProvider :: string Name
+ISDS_DiagnosticProvider :: void AppendReport(List<string> lines);
+ISDS_DisplayQuery :: bool IsDisplay(Thing thing);
+ISDS_DisplayQuery :: bool TryGetDisplayKey(Thing thing, out SDS_StockKey key);
+ISDS_MedicalCarePolicy :: bool Allows(ThingDef medicine, Thing billGiver);
+ISDS_MirrorPhysical :: bool TryTakePhysical(SDS_StockKey key, Thing mirror, int count, out Thing made);
+ISDS_MirrorPhysical :: bool TryTakeWholePhysical(SDS_StockKey key, Thing mirror, out Thing made);
+ISDS_MirrorQuery :: bool IsMirror(Thing thing);
+ISDS_MirrorQuery :: int Version
+ISDS_MirrorQuery :: IReadOnlyList<Thing> VisibleThingsOfDef(Map map, ThingDef def);
+ISDS_Port :: bool CanReach(Pawn actor);
+ISDS_Port :: bool IsSelf
+ISDS_Port :: bool Operational
+ISDS_Port :: float RankDistanceSquared(IntVec3 reference);
+ISDS_Port :: IntVec3 AccessCell
+ISDS_Port :: Map Map
+ISDS_Port :: PathEndMode AccessMode
+ISDS_Port :: Pawn Pawn
+ISDS_Port :: Thing Thing
+ISDS_PortProvider :: bool IsLocalUsable(Map map);
+ISDS_PortProvider :: bool TryGetPort(Thing thing, out ISDS_Port port);
+ISDS_PortProvider :: bool TryGetSelfPort(Pawn pawn, out ISDS_Port port);
+ISDS_PortProvider :: void AppendCandidates(in SDS_EndpointQuery query, List<ISDS_Port> into);
+ISDS_PrioritySource :: bool IgnorePriority
+ISDS_PrioritySource :: int Priority
+ISDS_ReclaimWorld :: bool JobExists(int jobLoadID);
+ISDS_ReclaimWorld :: bool LordExists(int lordLoadID);
+ISDS_ReclaimWorld :: int CurrentTick
+ISDS_ReclaimWorld :: void RemoveFromCaravan(int lordLoadID, Thing thing);
+ISDS_TransportLoadSink :: bool InjectTransportLoadCandidates(ThingWithComps host, List<TransferableOneWay> transferables);
+ISDSCompatAdapter :: bool IsTargetLoaded
+ISDSCompatAdapter :: string Name
+ISDSCompatAdapter :: string TargetPackageId
+ISDSCompatAdapter :: void Apply();
+SDS_ApiCaller :: public bool IsNonPawn
+SDS_ApiCaller :: public Faction faction;
+SDS_ApiCaller :: public Pawn pawn;
+SDS_ApiCaller :: public static SDS_ApiCaller FromFaction(Faction faction, Thing claimOwner = null)
+SDS_ApiCaller :: public static SDS_ApiCaller FromPawn(Pawn pawn)
+SDS_ApiCaller :: public Thing claimOwner;
+SDS_ApiStockInfo :: public bool forbidden;
+SDS_ApiStockInfo :: public bool resolved;
+SDS_ApiStockInfo :: public long available;
+SDS_ApiStockInfo :: public long total;
+SDS_ApiStockInfo :: public SDS_ApiResultCode result;
+SDS_ApiStockInfo :: public SDS_ReadVersions versions;
+SDS_ApiStockInfo :: public SDS_StockKey key;
+SDS_ApiStockInfo :: public SDS_SupplyFailure failure;
+SDS_CompatGates :: public static bool AllowsTransportLoadInjection(Dialog_LoadTransporters dialog)
+SDS_CompatGates :: public static bool RegisterTransportLoadInjection(Func<Dialog_LoadTransporters, bool> gate)
+SDS_CompatGates :: public static void Reset()
+SDS_Config :: public const float ArrayPowerDefault = 1000f;
+SDS_Config :: public const float ArrayPowerMax = 2000f;
+SDS_Config :: public const float ArrayPowerMin = 0f;
+SDS_Config :: public const float CorePowerDefault = 1000f;
+SDS_Config :: public const float CorePowerMax = 2000f;
+SDS_Config :: public const float CorePowerMin = 0f;
+SDS_Config :: public const float PortPowerDefault = 10f;
+SDS_Config :: public const float PortPowerMax = 100f;
+SDS_Config :: public const float PortPowerMin = 0f;
+SDS_Config :: public const int CapacityPerArrayDefault = 30;
+SDS_Config :: public const int CapacityPerArrayMax = 90;
+SDS_Config :: public const int CapacityPerArrayMin = 10;
+SDS_Config :: public const int GridCapacityDefault = 30;
+SDS_Config :: public const int GridCapacityMax = 90;
+SDS_Config :: public const int GridCapacityMin = 10;
+SDS_Config :: public const string ArrayDefName = "SDS_BuildingCapacityArray";
+SDS_Config :: public const string CoreDefName = "SDS_BuildingCore";
+SDS_Config :: public const string PortDefName = "SDS_BuildingPort";
+SDS_Config :: public static bool AllowPriorityOutflow
+SDS_Config :: public static bool ExcludeGridFromWealth
+SDS_Config :: public static bool ForceWeaponApparelVirtual
+SDS_Config :: public static bool IgnorePriorityMode
+SDS_Config :: public static bool PlayerFactionOnlyAccess
+SDS_Config :: public static bool SeparateByQuality
+SDS_Config :: public static bool SeparateByStuff
+SDS_Config :: public static float Clamp(float value, float min, float max)
+SDS_Config :: public static int CapacityPerArray
+SDS_Config :: public static int Clamp(int value, int min, int max)
+SDS_Config :: public static int ClampCapacityPerArray(int value)
+SDS_Config :: public static int ClampGridCapacity(int value)
+SDS_Config :: public static int GridCapacity
+SDS_Config :: public static SDS_Settings Current;
+SDS_Config :: public static StoragePriority CoreStoragePriority
+SDS_EndpointDecision :: public bool allowed;
+SDS_EndpointDecision :: public float distanceSquared;
+SDS_EndpointDecision :: public int priority;
+SDS_EndpointDecision :: public ISDS_Port port;
+SDS_EndpointDecision :: public void Reset()
+SDS_EndpointQuery :: public bool allowProducedMarked;
+SDS_EndpointQuery :: public bool allowSelf;
+SDS_EndpointQuery :: public bool requireReach;
+SDS_EndpointQuery :: public bool requireStock;
+SDS_EndpointQuery :: public Danger danger;
+SDS_EndpointQuery :: public int priority;
+SDS_EndpointQuery :: public IntVec3 reference;
+SDS_EndpointQuery :: public Map map;
+SDS_EndpointQuery :: public Pawn actor;
+SDS_EndpointQuery :: public SDS_EndpointOp op;
+SDS_EndpointQuery :: public SDS_StockKey key;
+SDS_EndpointQuery :: public static SDS_EndpointQuery Deposit(Thing thing, Pawn actor, bool allowProducedMarked = false)
+SDS_EndpointQuery :: public static SDS_EndpointQuery DepositForNonPawn(Thing thing, Map map, IntVec3 reference)
+SDS_EndpointQuery :: public static SDS_EndpointQuery WithdrawPoint(Pawn actor)
+SDS_EndpointQuery :: public Thing thing;
+SDS_EndpointQuery :: public void ApplyHostPriority()
+SDS_HediffDefOf :: public const string ChipAName = "SDS_ImplantHediffA";
+SDS_HediffDefOf :: public const string ChipBName = "SDS_ImplantHediffB";
+SDS_HediffDefOf :: public static HediffDef ChipA
+SDS_HediffDefOf :: public static HediffDef ChipB
+SDS_Host :: public static ISDS_DeliverySink Delivery;
+SDS_Host :: public static ISDS_DepositFilter DepositFilter;
+SDS_Host :: public static ISDS_DepositJobs DepositJobs;
+SDS_Host :: public static ISDS_DisplayQuery Display;
+SDS_Host :: public static ISDS_MedicalCarePolicy MedicalCare;
+SDS_Host :: public static ISDS_MirrorPhysical MirrorPhysical;
+SDS_Host :: public static ISDS_MirrorQuery MirrorQuery;
+SDS_Host :: public static ISDS_PortProvider Ports;
+SDS_Host :: public static ISDS_PrioritySource Priority;
+SDS_Host :: public static ISDS_ReclaimWorld ReclaimWorld;
+SDS_Host :: public static ISDS_TransportLoadSink TransportLoad;
+SDS_Host :: public static void Install(SDS_HostSlots slots)
+SDS_HostSlots :: public ISDS_DeliverySink delivery;
+SDS_HostSlots :: public ISDS_DepositFilter depositFilter;
+SDS_HostSlots :: public ISDS_DepositJobs depositJobs;
+SDS_HostSlots :: public ISDS_DisplayQuery display;
+SDS_HostSlots :: public ISDS_MedicalCarePolicy medicalCare;
+SDS_HostSlots :: public ISDS_MirrorPhysical mirrorPhysical;
+SDS_HostSlots :: public ISDS_MirrorQuery mirrorQuery;
+SDS_HostSlots :: public ISDS_PortProvider ports;
+SDS_HostSlots :: public ISDS_PrioritySource priority;
+SDS_HostSlots :: public ISDS_ReclaimWorld reclaimWorld;
+SDS_HostSlots :: public ISDS_TransportLoadSink transportLoad;
+SDS_JobDefOf :: public const string DepositToGridName = "SDS_DepositToGrid";
+SDS_JobDefOf :: public const string WithdrawForTransportLoadName = "SDS_WithdrawForTransportLoad";
+SDS_JobDefOf :: public const string WithdrawPreservedForBillName = "SDS_WithdrawPreservedForBill";
+SDS_JobDefOf :: public static JobDef DepositToGrid
+SDS_JobDefOf :: public static JobDef WithdrawForTransportLoad
+SDS_JobDefOf :: public static JobDef WithdrawPreservedForBill
+SDS_MedicalGate :: public static bool Allows(Thing billGiver, ThingDef def)
+SDS_PreserveHooks :: public static bool Register(Func<Thing, bool> probe)
+SDS_PreserveHooks :: public static bool RequiresPreserved(Thing thing)
+SDS_PreserveHooks :: public static int Count
+SDS_PreserveHooks :: public static void Reset()
+SDS_ReadVersions :: public int endpoint;
+SDS_ReadVersions :: public int filter;
+SDS_ReadVersions :: public int mirror;
+SDS_ReadVersions :: public int reservation;
+SDS_ReadVersions :: public int stock;
+SDS_ReadVersions :: public int tick;
+SDS_ReclaimSave :: public bool hand;
+SDS_ReclaimSave :: public int jobLoadID;
+SDS_ReclaimSave :: public int ownerLoadID;
+SDS_ReclaimSave :: public int tick;
+SDS_ReclaimSave :: public List<int> counts = new List<int>();
+SDS_ReclaimSave :: public List<Thing> things = new List<Thing>();
+SDS_ReclaimSave :: public SDS_ReclaimPolicy policy;
+SDS_ReclaimSave :: public void ExposeData()
+SDS_Reservation :: public int count;
+SDS_Reservation :: public int jobLoadID;
+SDS_Reservation :: public Pawn pawn;
+SDS_Reservation :: public SDS_StockKey key;
+SDS_Reservation :: public void ExposeData()
+SDS_Settings :: public bool allowPriorityOutflow;
+SDS_Settings :: public bool excludeGridFromWealth;
+SDS_Settings :: public bool forceWeaponApparelVirtual;
+SDS_Settings :: public bool highestStoragePriority;
+SDS_Settings :: public bool playerFactionOnlyAccess;
+SDS_Settings :: public bool separateByQuality = true;
+SDS_Settings :: public bool separateByStuff = true;
+SDS_Settings :: public float arrayPower = SDS_Config.ArrayPowerDefault;
+SDS_Settings :: public float corePower = SDS_Config.CorePowerDefault;
+SDS_Settings :: public float portPower = SDS_Config.PortPowerDefault;
+SDS_Settings :: public int capacityPerArray = SDS_Config.CapacityPerArrayDefault;
+SDS_Settings :: public int endpointStoragePriority = (int)StoragePriority.Normal;
+SDS_Settings :: public int gridCapacity = SDS_Config.GridCapacityDefault;
+SDS_Settings :: public override void ExposeData()
+SDS_Settings :: public void ClampAll()
+SDS_Settings :: public void ResetToDefaults()
+SDS_SidebarUIState :: public bool hasSelection;
+SDS_SidebarUIState :: public bool selectedPreserved;
+SDS_SidebarUIState :: public List<string> collapsed = new List<string>();
+SDS_SidebarUIState :: public SDS_StockKey selectedKey;
+SDS_SidebarUIState :: public Vector2 scroll = Vector2.zero;
+SDS_SidebarUIState :: public void ExposeData()
+SDS_SidebarUIState :: public void Normalize()
+SDS_StockEntry :: public float avgHitPoints = -1f;
+SDS_StockEntry :: public float avgRotProgress = -1f;
+SDS_StockEntry :: public long count;
+SDS_StockEntry :: public SDS_StockEntry()
+SDS_StockEntry :: public SDS_StockEntry(SDS_StockKey key, long count)
+SDS_StockEntry :: public SDS_StockKey key;
+SDS_StockEntry :: public void ExposeData()
+SDS_StockKey :: public bool Equals(SDS_StockKey other)
+SDS_StockKey :: public bool HasIdentity
+SDS_StockKey :: public bool preserved;
+SDS_StockKey :: public bool Resolved
+SDS_StockKey :: public bool SameAs(SDS_StockKey other)
+SDS_StockKey :: public bool TryResolve()
+SDS_StockKey :: public int qualityInt = -1;
+SDS_StockKey :: public override bool Equals(object obj)
+SDS_StockKey :: public override int GetHashCode()
+SDS_StockKey :: public SDS_StockKey()
+SDS_StockKey :: public SDS_StockKey(ThingDef thingDef, ThingDef stuff, int qualityInt) : this(thingDef, stuff, qualityInt, false)
+SDS_StockKey :: public SDS_StockKey(ThingDef thingDef, ThingDef stuff, int qualityInt, bool preserved)
+SDS_StockKey :: public static int CompareIdentity(SDS_StockKey a, SDS_StockKey b)
+SDS_StockKey :: public string defName;
+SDS_StockKey :: public string EffectiveDefName
+SDS_StockKey :: public string EffectiveStuffName
+SDS_StockKey :: public string stuffName;
+SDS_StockKey :: public ThingDef stuff;
+SDS_StockKey :: public ThingDef thingDef;
+SDS_StockKey :: public void EnsureNames()
+SDS_StockKey :: public void ExposeData()
+SDS_StockVitals :: public float hitPoints = -1f;
+SDS_StockVitals :: public float rotProgress = -1f;
+SDS_StructureFact :: public bool Operational;
+SDS_StructureFact :: public Map Map;
+SDS_StructureFact :: public SDS_StructureKind Kind;
+SDS_StructureFact :: public Thing Thing;
+SDS_TransportLoadSave :: public bool preserved;
+SDS_TransportLoadSave :: public int containerThingID;
+SDS_TransportLoadSave :: public int qualityInt = -1;
+SDS_TransportLoadSave :: public int rowIndex = -1;
+SDS_TransportLoadSave :: public int units;
+SDS_TransportLoadSave :: public string defName;
+SDS_TransportLoadSave :: public string stuffName;
+SDS_TransportLoadSave :: public void ExposeData()
+SDS_WithdrawDeliveryPolicyDef :: public SDS_WithdrawMode mode = SDS_WithdrawMode.Hand;
+SDS_WithdrawDeliveryPolicyDef :: public string driverType;
+SDS_WithdrawDeliveryPolicyDef :: public string jobDefName;
+SDS_WithdrawPlan :: public ISDS_MirrorPhysical physical;
+SDS_WithdrawPlan :: public ISDS_Port endpoint;
+SDS_WithdrawPlan :: public SDS_WithdrawMode mode;
+SDS_WithdrawPlan :: public SDS_WithdrawQuery query;
+SDS_WithdrawQuery :: public bool preserved;
+SDS_WithdrawQuery :: public int quantity;
+SDS_WithdrawQuery :: public SDS_StockKey key;

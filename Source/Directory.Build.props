@@ -1,0 +1,41 @@
+<Project>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <NoWarn>CS0169;CS0649;CS0108;CS0114</NoWarn>
+    <RootNamespace>SuperDimensionalStorage</RootNamespace>
+    <SdsHarmonyRef Condition="'$(SdsHarmonyRef)' == ''">false</SdsHarmonyRef>
+    <GameDir Condition="'$(GameDir)' == ''">D:\RimWorld</GameDir>
+    <HarmonyDir Condition="'$(HarmonyDir)' == ''">$(MSBuildThisFileDirectory)..\..\.mod\harmony\1.7\Assemblies</HarmonyDir>
+  </PropertyGroup>
+
+  <!-- 生产程序集统一输出到 超维存储/Assemblies；测试工程不进生产输出 -->
+  <PropertyGroup Condition="'$(MSBuildProjectName)' != 'SDS.Tests' and '$(MSBuildProjectName)' != 'SDS.Core.Tests' and '$(MSBuildProjectName)' != 'SDS.Rules.Tests'">
+    <BaseOutputPath>$(MSBuildThisFileDirectory)..\Assemblies\</BaseOutputPath>
+    <OutputPath>$(MSBuildThisFileDirectory)..\Assemblies\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(GameDir)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityStubs">
+      <HintPath>$(GameDir)\UnityStubs.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony" Condition="'$(SdsHarmonyRef)' == 'true'">
+      <HintPath>$(HarmonyDir)\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

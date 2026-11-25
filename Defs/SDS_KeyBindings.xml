@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <!-- 超维空间侧边栏快捷键。放在 Game 分类：与建造（Architect）分类不做冲突提示，
+         因为 C/Q 在原版只在建造菜单/设计器激活时有意义，本 Mod 在那些场景主动让位。 -->
+    <KeyBindingDef>
+        <defName>SDS_OpenSuperSpace</defName>
+        <label>open superdimensional storage</label>
+        <category>Game</category>
+        <defaultKeyCodeA>C</defaultKeyCodeA>
+    </KeyBindingDef>
+
+    <KeyBindingDef>
+        <defName>SDS_OutputFromSuperSpace</defName>
+        <label>output selected superdimensional stock</label>
+        <category>Game</category>
+        <defaultKeyCodeA>Q</defaultKeyCodeA>
+    </KeyBindingDef>
+
+    <!-- 「使用」：选中行 → 取出 1 件到目标小人脚下 → 替玩家点掉原版右键使用项（《用得上.md》）。 -->
+    <KeyBindingDef>
+        <defName>SDS_UseFromSuperSpace</defName>
+        <label>use selected superdimensional stock</label>
+        <category>Game</category>
+        <defaultKeyCodeA>E</defaultKeyCodeA>
+    </KeyBindingDef>
+
+</Defs>

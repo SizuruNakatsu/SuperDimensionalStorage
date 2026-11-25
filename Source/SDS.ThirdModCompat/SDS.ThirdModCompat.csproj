@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>SDS.ThirdModCompat</AssemblyName>
+    <SdsHarmonyRef>true</SdsHarmonyRef>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SDS.Contracts\SDS.Contracts.csproj" />
+    <ProjectReference Include="..\SDS.Diag\SDS.Diag.csproj" />
+    <ProjectReference Include="..\SDS.Api\SDS.Api.csproj" />
+  </ItemGroup>
+
+</Project>

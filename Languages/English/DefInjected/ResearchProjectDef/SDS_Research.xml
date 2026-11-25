@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+    <SDS_BasicSuperStorage.label>Super Storage Basics</SDS_BasicSuperStorage.label>
+    <SDS_BasicSuperStorage.description>Begin to perceive the existence of super dimensional space. Building a super dimensional core anchors a passage to it, turning super dimensional space into a storage container.</SDS_BasicSuperStorage.description>
+
+    <SDS_AdvancedSuperStorage.label>Advanced Super Storage</SDS_AdvancedSuperStorage.label>
+    <SDS_AdvancedSuperStorage.description>Gain a basic understanding of super dimensional passage technology. Building a super dimensional anchor increases the number of physical interfaces between super dimensional space and the rimworld.</SDS_AdvancedSuperStorage.description>
+
+    <SDS_PrecisionSuperStorage.label>Precision Super Storage</SDS_PrecisionSuperStorage.label>
+    <SDS_PrecisionSuperStorage.description>Further understand the physical basis of super dimensional space. Building a super dimensional stabilizer increases its capacity. Research the basic model of the super dimensional link implant: while on the same map as a super dimensional core, colonists can access the stored stock at any time.</SDS_PrecisionSuperStorage.description>
+
+    <SDS_AdvancedPrecisionSuperStorage.label>Advanced Precision Super Storage</SDS_AdvancedPrecisionSuperStorage.label>
+    <SDS_AdvancedPrecisionSuperStorage.description>Fully understand the nature of super dimensional space; the passage no longer depends on anchoring by a super dimensional core. Research the advanced model of the super dimensional link implant: colonists can cross map boundaries to access the stored stock at any time, and can draw directly on super dimensional storage when trading with other colonies.</SDS_AdvancedPrecisionSuperStorage.description>
+
+</LanguageData>

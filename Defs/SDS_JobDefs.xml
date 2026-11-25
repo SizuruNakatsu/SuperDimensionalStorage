@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <!--
+      运输舱 / 传送门装载：装载清单里的超维品类在地图上没有实物时，
+      小人先走到最近端点（核心 / 锚点 / 带芯片小人 / 机械体）把货取到手上，
+      再交给原版 HaulToTransporter / HaulToPortal 搬进运输舱 / 传送门。
+      全程不落地、表现与原版搬运一致。
+    -->
+    <JobDef>
+        <defName>SDS_WithdrawForTransportLoad</defName>
+        <driverClass>SuperDimensionalStorage.JobDriver_SDS_WithdrawFromGrid</driverClass>
+        <reportString>正在从超维空间取出待装载的货物。</reportString>
+        <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+    </JobDef>
+
+    <!-- 手动 / 自动把物品存入超维空间（右键物品 / 小人 gizmo）。 -->
+    <JobDef>
+        <defName>SDS_DepositToGrid</defName>
+        <driverClass>SuperDimensionalStorage.JobDriver_SDS_DepositToGrid</driverClass>
+        <reportString>正在把物品存入超维空间。</reportString>
+        <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+    </JobDef>
+
+    <!--
+      保真原料派活（尸体 / 缩装家具等）：原版 DoBill 找不到原料时，
+      小人先走到最近端点（核心 / 锚点 / 带芯片小人 / 机械体）把真身取到手上，
+      随后直接接回原版 DoBill，由原版搬运到工作台 / 屠宰点旁并开工。
+      全程不先落地、也不在端点与工作台之间来回捡。
+    -->
+    <JobDef>
+        <defName>SDS_WithdrawPreservedForBill</defName>
+        <driverClass>SuperDimensionalStorage.JobDriver_SDS_WithdrawPreservedForBill</driverClass>
+        <reportString>正在从超维空间取出清单所需的原料。</reportString>
+        <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+    </JobDef>
+
+    <!--
+      交付策略（《取的到》§6.2 / W30 / W59）：
+        - 默认 Hand：镜像目标不在派活期物化，由消费接缝（W58 数量补齐 / W59 消费点物化 /
+          取货原语）在消费点换真身；
+        - SpawnedTarget：只在显式登记时启用（逃生门）。当前仅瓶喂保留该形态：
+          瓶喂是库存交付，需要在派活期按营养缺口物化到端点，由原版 toil 取进背包。
+      只登记“确定需要派活期物化”的原版 Job；未登记一律走默认 Hand。
+      VirtualHandoff 不适用于物理取出（W3），误登记会被解析器跳过并回落默认值。
+    -->
+    <SuperDimensionalStorage.SDS_WithdrawDeliveryPolicyDef>
+        <defName>SDS_WithdrawPolicy_BottleFeedBaby</defName>
+        <jobDefName>BottleFeedBaby</jobDefName>
+        <mode>SpawnedTarget</mode>
+    </SuperDimensionalStorage.SDS_WithdrawDeliveryPolicyDef>
+
+</Defs>

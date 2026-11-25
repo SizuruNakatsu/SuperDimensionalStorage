@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+    <SDS_ImplantHediffA.label>Super Dimensional Basic Chip</SDS_ImplantHediffA.label>
+    <SDS_ImplantHediffA.description>An implanted super dimensional link chip (basic model). While on the same map as a super dimensional core, the colonist and attached mechanoids can access the stored stock at any time.</SDS_ImplantHediffA.description>
+
+    <SDS_ImplantHediffB.label>Super Dimensional Advanced Chip</SDS_ImplantHediffB.label>
+    <SDS_ImplantHediffB.description>An implanted super dimensional link chip (advanced model). As long as super dimensional storage is available, the colonist and attached mechanoids can access the stored stock across maps at any time.</SDS_ImplantHediffB.description>
+
+</LanguageData>

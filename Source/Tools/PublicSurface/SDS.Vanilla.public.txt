@@ -1,0 +1,25 @@
+﻿# SDS.Vanilla 公开面基线（派生工件，勿手改）
+# 生成：Tools/DumpPublicSurface.ps1 -Write；校验：Tools/DumpPublicSurface.ps1 -Check
+# 差异即公开面变更：按《设计原则.md》§三 判定 L1 / L2 / L3。
+[type] SDS_Vanilla :: public static class SDS_Vanilla
+SDS_Vanilla :: public const string HotkeyActionOpen = SDS_VanillaImpl.HotkeyActionOpen;
+SDS_Vanilla :: public const string HotkeyActionOutput = SDS_VanillaImpl.HotkeyActionOutput;
+SDS_Vanilla :: public const string HotkeyActionUse = SDS_VanillaImpl.HotkeyActionUse;
+SDS_Vanilla :: public static bool HasGrid
+SDS_Vanilla :: public static bool HotkeyCapturing
+SDS_Vanilla :: public static int ApplyRuntimeHooks()
+SDS_Vanilla :: public static int InstallPatches()
+SDS_Vanilla :: public static int PatchAppliedCount
+SDS_Vanilla :: public static int PatchDeclaredCount
+SDS_Vanilla :: public static SDS_HostSlots CreateHostSlots()
+SDS_Vanilla :: public static string GetHotkeyLabel(string action)
+SDS_Vanilla :: public static string HotkeyCaptureAction
+SDS_Vanilla :: public static string HotkeyCaptureNote
+SDS_Vanilla :: public static void ApplyStoragePriorityToEndpoints()
+SDS_Vanilla :: public static void BeginHotkeyCapture(string action)
+SDS_Vanilla :: public static void CancelHotkeyCapture()
+SDS_Vanilla :: public static void ClearHotkey(string action)
+SDS_Vanilla :: public static void NotifySettingsPageDrawn()
+SDS_Vanilla :: public static void RegisterAll()
+SDS_Vanilla :: public static void ReportUseProvidersOnce()
+SDS_Vanilla :: public static void ResetHotkeys()

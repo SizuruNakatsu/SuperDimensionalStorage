@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>SDS.Rules.Tests</AssemblyName>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <GenerateDependencyFile>true</GenerateDependencyFile>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(HarmonyDir)\0Harmony.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyMetadata Include="SdsGameDir" Value="$(GameDir)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(GameDir)\Assembly-CSharp.dll" Link="Assembly-CSharp.dll" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="$(GameDir)\UnityStubs.dll" Link="UnityStubs.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SDS.Contracts\SDS.Contracts.csproj" />
+    <ProjectReference Include="..\SDS.Diag\SDS.Diag.csproj" />
+    <ProjectReference Include="..\SDS.Core\SDS.Core.csproj" />
+    <ProjectReference Include="..\SDS.Rules\SDS.Rules.csproj" />
+  </ItemGroup>
+
+  <!-- 复用 Core.Tests 的账本夹具；Fakes 已归本工程 Support/Fakes，由默认编译项收编。 -->
+  <ItemGroup>
+    <Compile Include="..\SDS.Core.Tests\Support\CoreTestKit.cs" Link="Support\CoreTestKit.cs" />
+    <Compile Include="..\SDS.Core.Tests\Support\TestAssembly.cs" Link="Support\TestAssembly.cs" />
+  </ItemGroup>
+
+</Project>

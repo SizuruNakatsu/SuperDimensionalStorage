@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>SDS.Bootstrap</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SDS.Contracts\SDS.Contracts.csproj" />
+    <ProjectReference Include="..\SDS.Diag\SDS.Diag.csproj" />
+    <ProjectReference Include="..\SDS.Core\SDS.Core.csproj" />
+    <ProjectReference Include="..\SDS.Rules\SDS.Rules.csproj" />
+    <ProjectReference Include="..\SDS.Api\SDS.Api.csproj" />
+    <ProjectReference Include="..\SDS.Vanilla\SDS.Vanilla.csproj" />
+  </ItemGroup>
+
+</Project>

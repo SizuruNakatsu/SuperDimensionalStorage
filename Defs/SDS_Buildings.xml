@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <!-- 超维空间核心。3x3；耗电默认 1000W（可自定义 0–2000，0 为不耗电）；成本 500 铁 + 15 零部件。 -->
+    <ThingDef ParentName="BuildingBase">
+        <defName>SDS_BuildingCore</defName>
+        <label>超维空间核心</label>
+        <description>锚定超维空间的核心装置，锚定超维空间后才可被殖民者所用。</description>
+        <thingClass>SuperDimensionalStorage.Building_SDS_Core</thingClass>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <tickerType>Normal</tickerType>
+        <graphicData>
+            <texPath>SuperDimensionalStorage/Building/Core</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+            <drawOffset>(0,0,0)</drawOffset>
+            <!-- 贴图永不随旋转：旋转只改变交互格方位（下→左→上→右），基图与光效层都固定朝南绘制。 -->
+            <drawRotated>false</drawRotated>
+        </graphicData>
+        <!-- 通行与放置约定（照原版工作台 BenchBase：PassThroughOnly + canOverlapZones=false +
+             noRightClickDraftAttack=true）。不写 passability 会取枚举默认值 Standable —— 小人会站进机器里，
+             且不像工作台。 -->
+        <passability>PassThroughOnly</passability>
+        <canOverlapZones>false</canOverlapZones>
+        <noRightClickDraftAttack>true</noRightClickDraftAttack>
+        <uiIconScale>0.82</uiIconScale>
+        <altitudeLayer>Building</altitudeLayer>
+        <!-- 光效层必须实时绘制：默认 MapMeshOnly 只走 Thing.Print → PostPrintOnto，comp 的 PostDraw 不会被调用。 -->
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <rotatable>true</rotatable>
+        <fillPercent>0.5</fillPercent>
+        <pathCost>15</pathCost>
+        <statBases>
+            <WorkToBuild>12000</WorkToBuild>
+            <MaxHitPoints>15000</MaxHitPoints>
+            <Mass>50</Mass>
+            <Flammability>0</Flammability>
+            <Beauty>1</Beauty>
+            <DeteriorationRate>0</DeteriorationRate>
+        </statBases>
+        <size>(3,3)</size>
+        <!-- 交互格：显式固定偏移（缺省时原版会自动取"相邻可站立格"，位置不确定）。
+             偏移按建筑 Rotation 旋转：默认朝向下侧，顺时针旋转依次变为 左侧 / 上侧 / 右侧；
+             贴图由 drawRotated=false 固定不转 —— 旋转只挪交互格，不挪画面。
+             就近取物落点与后续植入体制造都复用这个点。 -->
+        <hasInteractionCell>true</hasInteractionCell>
+        <interactionCellOffset>(0,0,-2)</interactionCellOffset>
+        <thingCategories>
+            <li>BuildingsMisc</li>
+        </thingCategories>
+        <costList>
+            <Steel>500</Steel>
+            <ComponentIndustrial>15</ComponentIndustrial>
+        </costList>
+        <building>
+            <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+            <claimable>true</claimable>
+            <!-- 工作台标准三件套（原版 BenchBase 里就有）。缺 workTableRoomRole 时
+                 Building_WorkTable.SpawnSetup 会空引用报错 —— 实测日志：
+                 "Exception spawning loaded thing SDS_BuildingCore...: NullReferenceException
+                  at RimWorld.Building_WorkTable.SpawnSetup(...)"。 -->
+            <buildingTags>
+                <li>Production</li>
+            </buildingTags>
+            <workTableRoomRole>Workshop</workTableRoomRole>
+            <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+            <workTableNotInRoomRoleFactor>0.8</workTableNotInRoomRoleFactor>
+        </building>
+        <designationCategory>SDS_SuperStorage</designationCategory>
+        <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+        <researchPrerequisites>
+            <li>SDS_BasicSuperStorage</li>
+        </researchPrerequisites>
+        <!-- 存入筛选是全局唯一一套，页签直接画 grid.DepositFilter，所有核心、锚点改一处即全生效。 -->
+        <!-- ITab_Bills：核心是本 Mod 唯一能制造植入体芯片的工作台（thingClass 是 Building_WorkTable
+             的子类，见 SuperDimensionalStorage.Building_SDS_Core）。必须是 Building_WorkTable 子类，
+             否则 ITab_Bills 里的 `(Building_WorkTable)SelThing` 硬转型会抛异常、清单页签直接报废。 -->
+        <inspectorTabs>
+            <li>SuperDimensionalStorage.SDS_ITab_DepositFilter</li>
+            <li>ITab_Bills</li>
+        </inspectorTabs>
+        <!-- 工作台标准配套（照原版 BenchBase / FabricationBench）。⚠ 类型名必须是**完整类名**
+             （PlaceWorker_ 前缀不能省）：原来写成 ShowFacilitiesConnections / PreventInteractionSpotOverlap
+             时类型解析为 null，选中建筑画"复制建筑"gizmo 时直接抛
+             `ArgumentNullException: Value cannot be null. (Parameter 'type') at Verse.BuildableDef.get_PlaceWorkers()`。 -->
+        <placeWorkers>
+            <li>PlaceWorker_ReportWorkSpeedPenalties</li>
+            <li>PlaceWorker_ShowFacilitiesConnections</li>
+            <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+        </placeWorkers>
+        <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="CompProperties_ReportWorkSpeed">
+                <workSpeedStat>WorkTableWorkSpeedFactor</workSpeedStat>
+            </li>
+            <li Class="CompProperties_AffectedByFacilities">
+                <!-- 附属建筑（原版 Facility 契约）：锚点与稳固装置作为核心的附属设施，
+                     选中核心/设施时画连接线（原版口径：设施供电时绿线，未通电红线），放置时提示可连接对象。
+                     只借用原版的连线与放置提示：容量与可用性仍由本 Mod 的 Operational 判定，
+                     不读设施连线，也不因连线与否改变任何玩法结果。 -->
+                <linkableFacilities>
+                    <li>SDS_BuildingPort</li>
+                    <li>SDS_BuildingCapacityArray</li>
+                    <li>ToolCabinet</li>
+                </linkableFacilities>
+            </li>
+            <!-- 耗电：默认 1000W；可自定义范围 0–2000，填 0 表示不耗电。 -->
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>1000</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <!-- 通电时在基图之上叠画发光层（Core_light.png）。断电熄灭；耗电配置为 0 时不判定电力、常亮。 -->
+            <li Class="SuperDimensionalStorage.CompProperties_SDS_DrawExtraOverlay">
+                <graphicDataExtra>
+                    <shaderType>TransparentPostLight</shaderType>
+                    <texPath>SuperDimensionalStorage/Building/Core_light</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <drawSize>(4,4)</drawSize>
+                    <drawOffset>(0,0,0)</drawOffset>
+                    <!-- 与基图一致：drawRotated=false 时 Graphic.Draw 的 ShouldDrawRotated 为 false，光效层同样不转，始终对齐。 -->
+                    <drawRotated>false</drawRotated>
+                </graphicDataExtra>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <!-- 超维空间稳固装置。1x1；耗电默认 1000W（可自定义 0–2000）；容量增加 30（可自定义 10–90）；成本 100 铁 + 3 零部件。 -->
+    <ThingDef ParentName="BuildingBase">
+        <defName>SDS_BuildingCapacityArray</defName>
+        <label>超维空间稳固装置</label>
+        <description>稳固超维空间的高级装置，稳固超维空间后可提升超维空间的容量，多个装置可无限叠加。</description>
+        <thingClass>SuperDimensionalStorage.Building_SDS_CapacityArray</thingClass>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <tickerType>Normal</tickerType>
+        <graphicData>
+            <texPath>SuperDimensionalStorage/Building/Stabilizer</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(1.2,1.2)</drawSize>
+            <drawOffset>(0,0,0.1)</drawOffset>
+            <!-- 与核心/锚点一致：贴图永不随旋转（下面对 rotatable 也关了）。 -->
+            <drawRotated>false</drawRotated>
+        </graphicData>
+        <!-- 不写 passability 会取枚举默认值 Standable（小人可站进机器里）；原版同类 1x1 设备一律 PassThroughOnly。 -->
+        <passability>PassThroughOnly</passability>
+        <noRightClickDraftAttack>true</noRightClickDraftAttack>
+        <uiIconScale>0.82</uiIconScale>
+        <altitudeLayer>Building</altitudeLayer>
+        <!-- 光效层必须实时绘制：默认 MapMeshOnly 只走 Thing.Print → PostPrintOnto，comp 的 PostDraw 不会被调用。 -->
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <!-- 稳固装置没有朝向语义：禁止旋转，贴图与光效都固定。 -->
+        <rotatable>false</rotatable>
+        <fillPercent>0.5</fillPercent>
+        <pathCost>15</pathCost>
+        <statBases>
+            <WorkToBuild>3500</WorkToBuild>
+            <MaxHitPoints>5000</MaxHitPoints>
+            <Mass>10</Mass>
+            <Flammability>0</Flammability>
+            <Beauty>1</Beauty>
+            <DeteriorationRate>0</DeteriorationRate>
+        </statBases>
+        <size>(1,1)</size>
+        <thingCategories>
+            <li>BuildingsMisc</li>
+        </thingCategories>
+        <costList>
+            <Steel>100</Steel>
+            <ComponentIndustrial>3</ComponentIndustrial>
+        </costList>
+        <building>
+            <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+            <claimable>true</claimable>
+        </building>
+        <designationCategory>SDS_SuperStorage</designationCategory>
+        <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+        <researchPrerequisites>
+            <li>SDS_PrecisionSuperStorage</li>
+        </researchPrerequisites>
+        <!-- 作为核心的附属建筑：放置时显示与核心的连接提示（原版 Facility 的绿色连线/可连接列表）。 -->
+        <placeWorkers>
+            <li>PlaceWorker_ShowFacilitiesConnections</li>
+        </placeWorkers>
+        <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <!-- 附属建筑（原版 Facility 契约）：只提供连线/断电红线的表现；
+                 容量加成仍由本 Mod 的 Operational 判定，不读设施连线。
+                 maxSimultaneous 取足够大的值（一个核心可挂多个稳固装置）；
+                 showMaxSimultaneous=false 让检视面板不出现「最大同时连接数」这一行（R2：检视面板只留可用性状态）。 -->
+            <li Class="CompProperties_Facility">
+                <maxSimultaneous>99</maxSimultaneous>
+                <showMaxSimultaneous>false</showMaxSimultaneous>
+            </li>
+            <!-- 耗电：默认 1000W；可自定义范围 0–2000，填 0 表示不耗电。 -->
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>1000</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <!-- 通电时在基图之上叠画发光层（Stabilizer_light.png）。断电熄灭；耗电配置为 0 时不判定电力、常亮。 -->
+            <li Class="SuperDimensionalStorage.CompProperties_SDS_DrawExtraOverlay">
+                <graphicDataExtra>
+                    <shaderType>TransparentPostLight</shaderType>
+                    <texPath>SuperDimensionalStorage/Building/Stabilizer_light</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <drawSize>(1.2,1.2)</drawSize>
+                    <drawOffset>(0,0,0.1)</drawOffset>
+                    <!-- 与基图一致：光效层同样不随旋转。 -->
+                    <drawRotated>false</drawRotated>
+                </graphicDataExtra>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <!-- 超维空间锚点。1x1；耗电默认 10W（可自定义 0–100）；成本 10 铁 + 1 零部件。 -->
+    <ThingDef ParentName="BuildingBase">
+        <defName>SDS_BuildingPort</defName>
+        <label>超维空间锚点</label>
+        <description>联通超维空间的基础装置，联通超维空间后可被殖民者从此处存取超维空间库存，耗电远低于核心可普及在殖民地各地。</description>
+        <thingClass>SuperDimensionalStorage.Building_SDS_Port</thingClass>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <!-- 定稿 §四.超维空间锚点.6 要求"放入后立刻数据化"，因此用 Normal 心跳（每 tick 刷缓冲）。 -->
+        <tickerType>Normal</tickerType>
+        <graphicData>
+            <!-- 锚点使用自己的 Anchor.png（1x1），不要复用核心贴图。 -->
+            <texPath>SuperDimensionalStorage/Building/Anchor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(1.2,1.2)</drawSize>
+            <drawOffset>(0,0,0.1)</drawOffset>
+            <!-- 与核心一致：贴图永不旋转（锚点本身也已 rotatable=false，这里再兜底老存档里的已旋转实例）。 -->
+            <drawRotated>false</drawRotated>
+        </graphicData>
+        <uiIconScale>0.82</uiIconScale>
+        <altitudeLayer>Building</altitudeLayer>
+        <!-- 光效层必须实时绘制：默认 MapMeshOnly 只走 Thing.Print → PostPrintOnto，comp 的 PostDraw 不会被调用。 -->
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <!-- 锚点交互格就在自身格子上，旋转没有意义：直接禁止旋转（贴图也不会转）。 -->
+        <rotatable>false</rotatable>
+        <!-- 类似地砖：可站立/可通行，不做墙体。 -->
+        <passability>Standable</passability>
+        <pathCost>15</pathCost>
+        <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+        <coversFloor>false</coversFloor>
+        <blockLight>false</blockLight>
+        <blockWind>false</blockWind>
+        <fillPercent>0.5</fillPercent>
+        <canOverlapZones>true</canOverlapZones>
+        <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+        <holdsRoof>false</holdsRoof>
+        <castEdgeShadows>false</castEdgeShadows>
+        <statBases>
+            <WorkToBuild>2500</WorkToBuild>
+            <MaxHitPoints>3000</MaxHitPoints>
+            <Mass>10</Mass>
+            <Flammability>0</Flammability>
+            <Beauty>1</Beauty>
+            <DeteriorationRate>0</DeteriorationRate>
+        </statBases>
+        <size>(1,1)</size>
+        <thingCategories>
+            <li>BuildingsMisc</li>
+        </thingCategories>
+        <costList>
+            <Steel>10</Steel>
+            <ComponentIndustrial>1</ComponentIndustrial>
+        </costList>
+        <building>
+            <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+            <claimable>true</claimable>
+            <!-- 锚点格上允许堆东西、不腐烂、不参与美观统计。 -->
+            <preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+            <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+            <maxItemsInCell>24</maxItemsInCell>
+        </building>
+        <!-- 交互格 = 锚点自身格（偏移 0,0,0）：小人站到锚点上完成存入/取出。
+             锚点是 Standable 地砖式建筑，该格本来就是可站立格；def 里已有的
+             preventDeteriorationOnTop / maxItemsInCell=24 也正好支持物品落在锚点上。 -->
+        <hasInteractionCell>true</hasInteractionCell>
+        <interactionCellOffset>(0,0,0)</interactionCellOffset>
+        <designationCategory>SDS_SuperStorage</designationCategory>
+        <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+        <researchPrerequisites>
+            <li>SDS_AdvancedSuperStorage</li>
+        </researchPrerequisites>
+        <!-- 作为核心的附属建筑：放置时显示与核心的连接提示（原版 Facility 的绿色连线/可连接列表）。 -->
+        <placeWorkers>
+            <li>PlaceWorker_ShowFacilitiesConnections</li>
+        </placeWorkers>
+        <!-- 存入筛选是全局唯一一套，页签直接画 grid.DepositFilter，所有 A/C 改一处即全生效。 -->
+        <inspectorTabs>
+            <li>SuperDimensionalStorage.SDS_ITab_DepositFilter</li>
+        </inspectorTabs>
+        <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <!-- 附属建筑（原版 Facility 契约）：只提供连线/断电红线的表现；
+                 锚点可用性仍由本 Mod 的 Operational（电力 + 本图有可用核心）判定，不读设施连线。
+                 showMaxSimultaneous=false 让检视面板不出现「最大同时连接数」这一行（R2：检视面板只留可用性状态）。 -->
+            <li Class="CompProperties_Facility">
+                <maxSimultaneous>99</maxSimultaneous>
+                <showMaxSimultaneous>false</showMaxSimultaneous>
+            </li>
+            <!-- 耗电：默认 10W；可自定义范围 0–100，填 0 表示不耗电。 -->
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>10</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <!-- 通电时在基图之上叠画锚点自己的发光层（Anchor_light.png），与基图同为 1x1。 -->
+            <li Class="SuperDimensionalStorage.CompProperties_SDS_DrawExtraOverlay">
+                <graphicDataExtra>
+                    <shaderType>TransparentPostLight</shaderType>
+                    <texPath>SuperDimensionalStorage/Building/Anchor_light</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <drawSize>(1.2,1.2)</drawSize>
+                    <drawOffset>(0,0,0.1)</drawOffset>
+                    <!-- 与基图一致：光效层同样不随旋转。 -->
+                    <drawRotated>false</drawRotated>
+                </graphicDataExtra>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <!-- 工作类型：让小人到「超维空间核心」执行清单（目前只有制造植入体芯片的两个配方）。
+         为什么必须有这条：原版 WorkGiver_DoBill.ThingIsUsableBillGiver 只认
+         `def.fixedBillGiverDefs` 里列出的建筑（普通建筑不会自动成为工作台宿主），
+         没有它的话清单页签挂得上、却永远没人来干活。
+         工作类型取 Smithing（与精密装配台 DoBillsFabricationBench 同档）；
+         需求操作能力 Manipulation。 -->
+    <WorkGiverDef>
+        <defName>SDS_DoBillsCore</defName>
+        <label>在超维空间核心上制造</label>
+        <giverClass>WorkGiver_DoBill</giverClass>
+        <workType>Smithing</workType>
+        <priorityInType>55</priorityInType>
+        <fixedBillGiverDefs>
+            <li>SDS_BuildingCore</li>
+        </fixedBillGiverDefs>
+        <verb>在超维空间核心上制造</verb>
+        <gerund>正在超维空间核心上制造</gerund>
+        <requiredCapacities>
+            <li>Manipulation</li>
+        </requiredCapacities>
+        <prioritizeSustains>true</prioritizeSustains>
+    </WorkGiverDef>
+
+    <!-- D3：隐藏金库。每张有可用端点的地图自动生成一座（不是玩家建造项）。
+         约束（用户已拍板）：不可选 / 不可拆 / 不挡路 / 不绘制 / 不产生财富。
+         作用：给物理镜像提供固定金库格；并以原版 IHaulSource 容器形态
+               把镜像投影暴露给「读原版容器」的第三方（如联合轻工全息打印机）。 -->
+    <ThingDef ParentName="BuildingBase">
+        <defName>SDS_HiddenVault</defName>
+        <label>超维空间金库</label>
+        <description>隐藏金库：物理镜像的存放点。玩家不可见、不可选、不可拆、不阻挡通行。</description>
+        <thingClass>SuperDimensionalStorage.Building_SDS_Vault</thingClass>
+        <category>Building</category>
+        <tickerType>Never</tickerType>
+        <selectable>false</selectable>
+        <drawerType>None</drawerType>
+        <dontPrint>true</dontPrint>
+        <passability>Standable</passability>
+        <pathCost>0</pathCost>
+        <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+        <coversFloor>false</coversFloor>
+        <blockLight>false</blockLight>
+        <blockWind>false</blockWind>
+        <fillPercent>0</fillPercent>
+        <canOverlapZones>false</canOverlapZones>
+        <holdsRoof>false</holdsRoof>
+        <castEdgeShadows>false</castEdgeShadows>
+        <useHitPoints>false</useHitPoints>
+        <destroyable>true</destroyable>
+        <rotatable>false</rotatable>
+        <altitudeLayer>Building</altitudeLayer>
+        <graphicData>
+            <texPath>SuperDimensionalStorage/Building/Core</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(1.2,1.2)</drawSize>
+        </graphicData>
+        <size>(1,1)</size>
+        <statBases>
+            <MarketValue>0</MarketValue>
+            <Beauty>0</Beauty>
+            <Flammability>0</Flammability>
+        </statBases>
+        <building>
+            <claimable>false</claimable>
+            <deconstructible>false</deconstructible>
+            <preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+            <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+            <!-- 同格要放得下“每图 30+ 个虚拟品类”的镜像；镜像走 GenSpawn 不受此限，
+                 这里放大是为了让回退落地（GenPlace）也不会被单格数量挡住。 -->
+            <maxItemsInCell>999</maxItemsInCell>
+        </building>
+    </ThingDef>
+
+</Defs>

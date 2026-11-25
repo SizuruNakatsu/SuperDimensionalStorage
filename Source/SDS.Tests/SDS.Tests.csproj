@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>SDS.Tests</AssemblyName>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <GenerateDependencyFile>true</GenerateDependencyFile>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyMetadata Include="SdsGameDir" Value="$(GameDir)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <!-- 测试宿主需要能解析 Verse / RimWorld 类型；引用不复制，但运行时必须在输出目录 -->
+  <ItemGroup>
+    <None Include="$(GameDir)\Assembly-CSharp.dll" Link="Assembly-CSharp.dll" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="$(GameDir)\UnityStubs.dll" Link="UnityStubs.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <!-- Harmony 挂点工具需要运行时程序集；只进测试输出，不进生产 -->
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(HarmonyDir)\0Harmony.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SDS.Contracts\SDS.Contracts.csproj" />
+    <ProjectReference Include="..\SDS.Diag\SDS.Diag.csproj" />
+    <ProjectReference Include="..\SDS.Core\SDS.Core.csproj" />
+    <ProjectReference Include="..\SDS.Rules\SDS.Rules.csproj" />
+    <ProjectReference Include="..\SDS.Api\SDS.Api.csproj" />
+    <ProjectReference Include="..\SDS.Vanilla\SDS.Vanilla.csproj" />
+    <ProjectReference Include="..\SDS.ThirdModCompat\SDS.ThirdModCompat.csproj" />
+    <ProjectReference Include="..\SDS.Bootstrap\SDS.Bootstrap.csproj" />
+  </ItemGroup>
+
+  <!-- Core 账本夹具 + Rules 集成环境；Fakes 归 Rules.Tests 所有，本工程只链接源码。 -->
+  <ItemGroup>
+    <Compile Include="..\SDS.Core.Tests\Support\**\*.cs"
+             Link="Support\%(RecursiveDir)%(Filename)%(Extension)" />
+    <Compile Include="..\SDS.Rules.Tests\Support\RulesTestKit.cs" Link="Support\RulesTestKit.cs" />
+    <Compile Include="..\SDS.Rules.Tests\Support\Fakes\*.cs"
+             Link="Support\Fakes\%(Filename)%(Extension)" />
+  </ItemGroup>
+
+</Project>

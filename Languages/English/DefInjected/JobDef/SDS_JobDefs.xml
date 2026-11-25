@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+    <!-- JobDef.reportString 是 [MustTranslate] 字段：中文写在 Defs/SDS_JobDefs.xml 里，
+         英文必须放 DefInjected。旧方案逐工作类型的 JobDef 已删除。 -->
+    <SDS_WithdrawForTransportLoad.reportString>withdrawing cargo from the super dimensional space for loading.</SDS_WithdrawForTransportLoad.reportString>
+    <SDS_DepositToGrid.reportString>storing items in the super dimensional space.</SDS_DepositToGrid.reportString>
+
+</LanguageData>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+    <SDS_BuildingCore.label>Super Dimensional Core</SDS_BuildingCore.label>
+    <SDS_BuildingCore.description>The core device that anchors super dimensional space. Only after super dimensional space is anchored can colonists use it.</SDS_BuildingCore.description>
+
+    <SDS_BuildingCapacityArray.label>Super Dimensional Stabilizer</SDS_BuildingCapacityArray.label>
+    <SDS_BuildingCapacityArray.description>An advanced device that stabilizes super dimensional space. Once stabilized, it raises the capacity of super dimensional space, and multiple devices stack without limit.</SDS_BuildingCapacityArray.description>
+
+    <SDS_BuildingPort.label>Super Dimensional Anchor</SDS_BuildingPort.label>
+    <SDS_BuildingPort.description>A basic device that connects to super dimensional space. Once connected, colonists can store and withdraw super dimensional stock here; its power draw is far lower than the core, so it can be deployed throughout the colony.</SDS_BuildingPort.description>
+
+    <SDS_HiddenVault.label>Super Dimensional Vault</SDS_HiddenVault.label>
+    <SDS_HiddenVault.description>Hidden vault that stores the physical mirrors. Invisible, unselectable, undeconstructible and does not block movement.</SDS_HiddenVault.description>
+
+</LanguageData>

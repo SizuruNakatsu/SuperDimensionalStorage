@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+    <SDS_ImplantA.label>Super Dimensional Basic Chip</SDS_ImplantA.label>
+    <SDS_ImplantA.description>An implant (basic model) that lets a colonist link to super dimensional storage. Once implanted, the colonist can access the stored stock at any time on a map that has a super dimensional core.</SDS_ImplantA.description>
+
+    <SDS_ImplantB.label>Super Dimensional Advanced Chip</SDS_ImplantB.label>
+    <SDS_ImplantB.description>An implant (advanced model) that lets a colonist link to super dimensional storage. Once implanted, the colonist can access the stored stock across maps at any time.</SDS_ImplantB.description>
+
+</LanguageData>

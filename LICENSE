@@ -1,0 +1,54 @@
+MIT License
+
+Copyright (c) 2026 中津静流 (Sizuru)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+——————————————————————————————————————————————————————————
+Scope Notice (English)
+
+1. This license covers the source code (Source/) and documentation
+   (Framework/docs/) in this repository, as well as the compiled mod DLLs
+   under Assemblies/ (built from the same MIT-licensed source).
+
+2. Art assets are NOT covered by this license: textures (Textures/), the
+   preview image and icon (About/Preview.png, About/ModIcon.png) and other
+   artwork are copyrighted by the author and the artist (PSIONIC海豹).
+   They may not be copied, modified, redistributed, or used in any other
+   project without prior written permission from the copyright holders.
+
+3. Building and running this mod requires referencing RimWorld game
+   assemblies (Assembly-CSharp.dll, UnityStubs.dll, etc.), whose copyright
+   belongs to Ludeon Studios. This repository does not distribute or modify
+   those files, and this license grants no additional rights to use them.
+
+——————————————————————————————————————————————————————————
+许可范围说明（中文，参考译文；以英文版为准）
+
+1. 本许可覆盖本仓库内的源代码（Source/）、文档（Framework/docs/），
+   以及 Assemblies/ 下的编译产物 DLL（由同一 MIT 源码构建）。
+
+2. 美术资源不在本许可范围内：贴图（Textures/）、预览图与图标
+   （About/Preview.png、About/ModIcon.png）等美术资产版权归作者与
+   美术作者（PSIONIC海豹）所有。未经版权方事先书面许可，
+   不得复制、修改、再分发或将其用于任何其他项目。
+
+3. 构建与运行需引用 RimWorld 游戏程序集（Assembly-CSharp.dll、
+   UnityStubs.dll 等），其版权归 Ludeon Studios 所有。本仓库不分发、
+   不修改这些文件，本许可不授予使用这些文件的任何额外权利。

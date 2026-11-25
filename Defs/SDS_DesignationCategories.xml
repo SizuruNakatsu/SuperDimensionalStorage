@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <DesignationCategoryDef>
+        <defName>SDS_SuperStorage</defName>
+        <label>超维存储</label>
+        <order>110</order>
+        <bindingCatDef>Architect</bindingCatDef>
+        <!-- 原版每个类目都会列「取消/拆除」两个设计器（见 Core/Defs/Misc/Designations/DesignationCategories.xml）。
+             留空会导致本类目工具条里没有取消与拆除按钮。 -->
+        <specialDesignatorClasses>
+            <li>Designator_Cancel</li>
+            <li>Designator_Deconstruct</li>
+        </specialDesignatorClasses>
+    </DesignationCategoryDef>
+
+</Defs>

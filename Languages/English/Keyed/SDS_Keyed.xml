@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+    <SDS.Status.Online>online</SDS.Status.Online>
+    <SDS.Status.Offline>offline</SDS.Status.Offline>
+
+    <!-- First-entry operation guide notice letter shown on the right. -->
+    <SDS.IntroNotice.Label>Super Storage: Operation Guide</SDS.IntroNotice.Label>
+    <SDS.IntroNotice.Text>Research "Super Storage Basics" to unlock the Super Dimensional Core and anchor the space; research "Advanced Super Storage" to unlock the Super Dimensional Anchor for storing and withdrawing items across the colony; research "Precision Super Storage" to unlock the Super Dimensional Stabilizer and raise the capacity of super dimensional space.&#10;&#10;Research "Precision Super Storage" to unlock the Super Dimensional Basic Chip; once implanted, the colonist and attached mechanoids can access the stored stock at any time while on the map with a Super Dimensional Core. Research "Advanced Precision Super Storage" to unlock the Super Dimensional Advanced Chip; once implanted, the colonist and attached mechanoids can access the stored stock anywhere at any time once the space is anchored, and can draw directly on super dimensional storage when trading with other colonies.&#10;&#10;Click "Super Storage" at the bottom right (default hotkey: C) to open the Super Storage panel. Select an entry to output it (default hotkey: Q) or use it (default hotkey: E); when choosing an amount, confirm with Enter / middle mouse button.&#10;&#10;The mod settings screen lets you customize the mod's freedom, including zero power consumption, immunity to solar flares, increased capacity, and forcing weapons/apparel virtualization.</SDS.IntroNotice.Text>
+
+    <SDS.JobReport.Deposit>Storing {0} in superdimensional storage.</SDS.JobReport.Deposit>
+    <SDS.JobReport.DepositPartial>Storing {0} in superdimensional storage (inventory full, remainder left on the ground).</SDS.JobReport.DepositPartial>
+    <SDS.JobReport.DepositBlocked>Cannot store {0}: the inventory is full.</SDS.JobReport.DepositBlocked>
+
+    <SDS.Window.NoGrid>Super dimensional space unavailable</SDS.Window.NoGrid>
+    <SDS.Window.NoGridHint>There is no powered, undamaged super dimensional core in the world. The super dimensional space is currently unavailable.</SDS.Window.NoGridHint>
+    <SDS.Window.StockEmpty>The super dimensional space is empty.</SDS.Window.StockEmpty>
+    <SDS.Window.SearchNoMatch>No matching items (search by item name or category).</SDS.Window.SearchNoMatch>
+    <SDS.Window.PreservedTag>(preserved)</SDS.Window.PreservedTag>
+    <SDS.Channel.VirtualTip>Virtual channel: only def / stuff / quality / count / average HP and rot are recorded. Withdrawn items are rebuilt from the stack average; per-item differences (ingredients, poison, color, charge, study progress, etc.) are not kept.</SDS.Channel.VirtualTip>
+    <SDS.Channel.PreservedTip>Preserved channel: the ledger holds the real things; per-item state (ingredients, poison, rot, color, charge, study progress, etc.) is kept as-is, and the real thing is delivered on withdrawal.</SDS.Channel.PreservedTip>
+    <SDS.Window.AvailableSuffix>(available {0})</SDS.Window.AvailableSuffix>
+    <SDS.Window.Uncategorized>Uncategorized</SDS.Window.Uncategorized>
+    <SDS.Window.UnresolvedHeader>Unresolved entries: {0} (missing def / mod; kept in the ledger, not usable)</SDS.Window.UnresolvedHeader>
+    <SDS.Window.RetryResolve>Retry</SDS.Window.RetryResolve>
+    <SDS.Window.RetryResolveDone>Retry finished: {0} entries still unresolved.</SDS.Window.RetryResolveDone>
+
+    <SDS.Window.OutputButton>Output</SDS.Window.OutputButton>
+    <SDS.Window.BigTitle>Super Storage</SDS.Window.BigTitle>
+    <SDS.Window.GridStatusOn>Super dimensional space available　categories {0}/{1}</SDS.Window.GridStatusOn>
+    <SDS.Window.GridStatusOff>Super dimensional space unavailable</SDS.Window.GridStatusOff>
+    <SDS.Window.OutputNoKey>Select a row in the list first.</SDS.Window.OutputNoKey>
+    <SDS.Window.OutputSelected>Selected: {0} (max {1})</SDS.Window.OutputSelected>
+    <SDS.Window.OutputAmount>Amount</SDS.Window.OutputAmount>
+    <SDS.Window.OutputAll>All</SDS.Window.OutputAll>
+    <SDS.Window.OutputConfirm>Confirm</SDS.Window.OutputConfirm>
+    <SDS.Window.OutputConfirmTip>Enter or middle mouse to confirm; ESC to cancel.</SDS.Window.OutputConfirmTip>
+
+    <SDS.Window.FilterHint>Configure the deposit filter in the "Deposit filter" tab of the super dimensional core or the super dimensional anchor. All buildings share one standard, so changing one applies everywhere.</SDS.Window.FilterHint>
+    <SDS.Tab.DepositFilter>Deposit filter</SDS.Tab.DepositFilter>
+    <SDS.Tab.GlobalPriority>Global storage priority (all endpoints)</SDS.Tab.GlobalPriority>
+    <SDS.Tab.IgnorePriorityOn>Ignore priority is ON: anything that can enter is stored unconditionally.</SDS.Tab.IgnorePriorityOn>
+    <SDS.Tab.PriorityHint>Only the core changes this value; anchors and implanted pawns share it.</SDS.Tab.PriorityHint>
+    <SDS.Tab.ChannelHint>Channel is decided automatically: manufactured / raw resources / food / chunks are virtual by default; quest items, relics, art, study items, contents, color, charge and similar states are preserved. This tab only controls whether items may be deposited, not the channel.</SDS.Tab.ChannelHint>
+
+    <SDS.Target.Core>{0} (core)</SDS.Target.Core>
+    <SDS.Target.Port>{0} (anchor)</SDS.Target.Port>
+    <SDS.Target.Pawn>Implanted pawn ({0})</SDS.Target.Pawn>
+    <SDS.Target.Reserved>reserved port</SDS.Target.Reserved>
+
+    <SDS.Chip.UseLabel>Install {0}</SDS.Chip.UseLabel>
+    <SDS.Chip.HigherAlreadyInstalled>This pawn already has a higher-tier chip installed.</SDS.Chip.HigherAlreadyInstalled>
+    <SDS.Chip.MechCannotInstall>Mechanoids cannot install chips themselves; they inherit permission from their overseer.</SDS.Chip.MechCannotInstall>
+    <SDS.Chip.DepositItem>Store in super storage ({0})</SDS.Chip.DepositItem>
+    <SDS.Chip.DepositInventory>Store inventory items</SDS.Chip.DepositInventory>
+    <SDS.Chip.DepositInventoryDesc>Store every item in this pawn's inventory that the super storage deposit filter allows.</SDS.Chip.DepositInventoryDesc>
+    <SDS.Chip.NothingToDeposit>No inventory items can be stored (deposit filter or category limit).</SDS.Chip.NothingToDeposit>
+    <SDS.Chip.NoPort>This pawn has no operational super storage port.</SDS.Chip.NoPort>
+    <SDS.Chip.Deposited>Stored {0} items.</SDS.Chip.Deposited>
+    <SDS.Chip.DepositItemDone>Stored in super storage: {0} x{1}</SDS.Chip.DepositItemDone>
+    <SDS.Chip.DepositItemFailed>Could not store {0} (unreachable, not allowed by the deposit filter, or the category limit is full).</SDS.Chip.DepositItemFailed>
+    <SDS.Chip.DepositPartial>Stored {0} x{1}; {2} left on the ground (inventory full).</SDS.Chip.DepositPartial>
+
+    <SDS.Output.NoKey>No category selected.</SDS.Output.NoKey>
+    <SDS.Output.NoGrid>The super dimensional space is unavailable.</SDS.Output.NoGrid>
+    <SDS.Output.NoTarget>No output target selected.</SDS.Output.NoTarget>
+    <SDS.Output.PawnReserved>The implanted pawn port is reserved and not enabled in this version.</SDS.Output.PawnReserved>
+    <SDS.Output.TargetGone>The selected target no longer exists.</SDS.Output.TargetGone>
+    <SDS.Output.Insufficient>Not enough stored, nothing was output.</SDS.Output.Insufficient>
+    <SDS.Output.Unresolved>The def of "{0}" cannot be resolved right now (missing mod, renamed def, or XML load failure). The entry is kept and will recover automatically.</SDS.Output.Unresolved>
+    <SDS.Output.RebuildFailed>"{0}" could not be rebuilt into a real thing (MakeThing failed). Nothing was deducted; see the log.</SDS.Output.RebuildFailed>
+    <SDS.Output.Forbidden>This category is forbidden in super storage, so nothing was output. Click the lock button at the end of its row to allow it.</SDS.Output.Forbidden>
+    <SDS.Forbidden.CannotUse>This category is forbidden in super storage (not used for work or withdrawal). Click the lock button at the end of its row to allow it. It is still counted as wealth and can still be traded.</SDS.Forbidden.CannotUse>
+    <SDS.Output.Done>Output {0} x{1}.</SDS.Output.Done>
+    <SDS.Output.CannotPlace>This building cannot be placed here (terrain or blockers).</SDS.Output.CannotPlace>
+    <SDS.Output.InstallStarted>Started installing {0}: the real item is at the endpoint, waiting to be hauled and installed.</SDS.Output.InstallStarted>
+    <SDS.Output.InstallFailed>Install failed and the item was returned to super storage.</SDS.Output.InstallFailed>
+
+    <SDS.Preserved.NoAccess>No reachable super dimensional endpoint, so the preserved item cannot be brought onto the map.</SDS.Preserved.NoAccess>
+    <SDS.GrowthVat.ImplantEmbryo>Implant embryo from super storage</SDS.GrowthVat.ImplantEmbryo>
+    <SDS.GrowthVat.ImplantEmbryoDesc>Take a stored human embryo out of the super dimensional space and put it in the growth vat (about {0}).</SDS.GrowthVat.ImplantEmbryoDesc>
+    <SDS.GrowthVat.NoEmbryo>There is no human embryo in the super dimensional space.</SDS.GrowthVat.NoEmbryo>
+
+    <SDS.Window.TitleTip>Open the super storage panel: view stored data, configure the global deposit filter, and output stored goods to buildings or an implanted pawn.</SDS.Window.TitleTip>
+    <SDS.Button.Label>SDS</SDS.Button.Label>
+
+    <!-- SDS.Job.* moved to Languages/English/DefInjected/JobDef/SDS_JobDefs.xml:
+         JobDef.reportString is a [MustTranslate] field, so Keyed entries would be dead keys. -->
+
+    <SDS.Trade.VirtualStorageChanged>There is no longer enough "{0}" in the super dimensional space (available {1}), so the trade was cancelled. Please review the deal.</SDS.Trade.VirtualStorageChanged>
+    <SDS.Deposit.CapacityFull>The super dimensional space has reached its category limit ({0}/{1}); remaining items were not stored. Output some categories or raise the capacity limit.</SDS.Deposit.CapacityFull>
+    <SDS.Caravan.NeedsOutputPoint>Super dimensional space goods can only join a caravan if this map has an operational super dimensional endpoint (a powered super dimensional core / anchor).</SDS.Caravan.NeedsOutputPoint>
+    <SDS.Caravan.InstantUnsupported>Instant caravan formation does not support goods taken from the super dimensional space.</SDS.Caravan.InstantUnsupported>
+    <SDS.Caravan.NotEnoughStock>There is no longer enough "{0}" in the super dimensional space (another caravan or trade may have taken it). Departure was cancelled; please review the list.</SDS.Caravan.NotEnoughStock>
+
+    <SDS.Settings.Category>Super Storage</SDS.Settings.Category>
+    <SDS.Settings.GridCapacity>Super dimensional space base capacity: {0} (configurable range {1}-{2})</SDS.Settings.GridCapacity>
+    <SDS.Settings.CapacityUsage>Categories in use: {0}/{1} (lowering the limit does not evict existing categories; only new ones are refused)</SDS.Settings.CapacityUsage>
+    <SDS.Settings.CapacityPerArray>Capacity per stabilizer: {0} (configurable range {1}-{2})</SDS.Settings.CapacityPerArray>
+    <SDS.Settings.CorePower>Core power draw: {0}W (configurable range {1}-{2})</SDS.Settings.CorePower>
+    <SDS.Settings.ArrayPower>Stabilizer power draw: {0}W (configurable range {1}-{2})</SDS.Settings.ArrayPower>
+    <SDS.Settings.PortPower>Anchor power draw: {0}W (configurable range {1}-{2})</SDS.Settings.PortPower>
+    <SDS.Settings.ZeroMeansNoPower>Note: a power draw of 0 means no power is needed (no grid connection required).</SDS.Settings.ZeroMeansNoPower>
+    <SDS.Settings.ExcludeFromWealth>Exclude super dimensional storage from colony wealth (off by default = counted)</SDS.Settings.ExcludeFromWealth>
+    <SDS.Settings.PlayerFactionOnlyAccess>Only the player faction can use super dimensional storage (off by default)</SDS.Settings.PlayerFactionOnlyAccess>
+    <SDS.Settings.PlayerFactionOnlyAccess.Title>Confirm player-faction-only access</SDS.Settings.PlayerFactionOnlyAccess.Title>
+    <SDS.Settings.PlayerFactionOnlyAccess.Confirm>When on, wild animals, raiders, visitors, prisoners and quest lodgers can no longer withdraw, carry, wear, equip, ingest or use medicine from the grid. Player colonists, mechs and colony animals are unaffected. This only restricts access; it does not change stock counts, wealth, the resource counter or visibility. Enable?</SDS.Settings.PlayerFactionOnlyAccess.Confirm>
+    <SDS.Settings.HighestStoragePriority>Ignore priority for super dimensional storage</SDS.Settings.HighestStoragePriority>
+    <SDS.Settings.HighestStoragePriority.Title>Confirm highest priority</SDS.Settings.HighestStoragePriority.Title>
+    <SDS.Settings.HighestStoragePriority.Confirm>When on, the grid counts as the highest-priority storage for all storable items.&#10;&#10;· Storable items in stockpiles and storage buildings are hauled into the grid automatically.&#10;· Mutually exclusive with "Allow priority outflow": enabling this turns outflow off.&#10;· Contents of transporters, hoppers, caskets and other owner-based containers are not covered.&#10;· Turning this off restores vanilla priority behavior.&#10;&#10;Enable?</SDS.Settings.HighestStoragePriority.Confirm>
+    <SDS.Settings.AllowPriorityOutflow>Allow priority outflow (off by default)</SDS.Settings.AllowPriorityOutflow>
+    <SDS.Settings.AllowPriorityOutflow.Title>Confirm allow priority outflow</SDS.Settings.AllowPriorityOutflow.Title>
+    <SDS.Settings.AllowPriorityOutflow.Confirm>When on, super dimensional storage re-enters vanilla hauling candidates: colonists will haul stock out only when a storage container with strictly higher priority that accepts the item exists.&#10;&#10;· Only available stock (total − reserved) is used; items reserved by trade, caravan or bills are never hauled out.&#10;· Destination cell / container and mirror-job reservations still follow vanilla rules.&#10;· Mutually exclusive with "Ignore priority": enabling this turns it off.&#10;· Takes effect within 30 ticks; turning it off removes candidates within 30 ticks.&#10;· Player faction only.&#10;&#10;Enable?</SDS.Settings.AllowPriorityOutflow.Confirm>
+    <SDS.Settings.ForceGearVirtual>Force weapons/apparel virtualization</SDS.Settings.ForceGearVirtual>
+    <SDS.Settings.ForceGearVirtualDesc>Off by default; when on, ordinary weapons/apparel no longer enter preserved mode because of art, color, style or charges.</SDS.Settings.ForceGearVirtualDesc>
+    <SDS.Settings.ForceGearVirtual.Title>Confirm forced virtualization</SDS.Settings.ForceGearVirtual.Title>
+    <SDS.Settings.ForceGearVirtual.Confirm>This immediately converts convertible weapons/apparel in storage into virtual entries and permanently discards color, style, art (including generated titles/authors) and shield charges; shield belts recharge when withdrawn. This cannot be undone, and turning the switch off will not restore them. Only ordinary items are converted; quest items, relics, persona weapons, unique weapons, generated names, biocoded items, corpse-worn apparel, fuel and CE magazines stay preserved. Close trade, caravan and transport windows first. Continue?</SDS.Settings.ForceGearVirtual.Confirm>
+    <SDS.Settings.ForceGearVirtual.ConfirmNoGame>Not in a game: no stock will be converted, and loading a save will not auto-convert. Re-enable inside the save or withdraw and re-store the items. Enable anyway?</SDS.Settings.ForceGearVirtual.ConfirmNoGame>
+    <SDS.Settings.ForceGearVirtual.Done>Forced virtualization complete: {0} weapons/apparel converted.</SDS.Settings.ForceGearVirtual.Done>
+    <SDS.Settings.ForceGearVirtual.None>No convertible preserved weapons/apparel.</SDS.Settings.ForceGearVirtual.None>
+    <SDS.Settings.ForceGearVirtual.Blocked>Close trade, caravan or transport windows before enabling forced virtualization.</SDS.Settings.ForceGearVirtual.Blocked>
+    <SDS.Settings.ResetDefaults>Default</SDS.Settings.ResetDefaults>
+    <SDS.Settings.SeparateQuality>Count quality as a separate category</SDS.Settings.SeparateQuality>
+    <SDS.Settings.SeparateStuff>Count material as a separate category</SDS.Settings.SeparateStuff>
+    <SDS.Settings.SeparateDesc>These two options only change how the category cap is counted.</SDS.Settings.SeparateDesc>
+    <SDS.Window.OutputRecords>Record (pick which material / quality to output):</SDS.Window.OutputRecords>
+
+    <SDS.Settings.Hotkeys>Hotkeys</SDS.Settings.Hotkeys>
+    <SDS.Settings.HotkeyOpen>Open super storage</SDS.Settings.HotkeyOpen>
+    <SDS.Settings.HotkeyOutput>Output selected row</SDS.Settings.HotkeyOutput>
+    <SDS.Settings.HotkeyUse>Use selected row</SDS.Settings.HotkeyUse>
+    <SDS.Settings.HotkeySet>Set</SDS.Settings.HotkeySet>
+    <SDS.Settings.HotkeyClear>Clear</SDS.Settings.HotkeyClear>
+    <SDS.Settings.HotkeyReset>Reset hotkeys</SDS.Settings.HotkeyReset>
+    <SDS.Settings.HotkeyNone>None</SDS.Settings.HotkeyNone>
+    <SDS.Settings.HotkeyCaptureTitle>Set hotkey for "{0}"</SDS.Settings.HotkeyCaptureTitle>
+    <SDS.Settings.HotkeyCaptureHint>Press a key. ESC = no hotkey; Enter is reserved for confirm.</SDS.Settings.HotkeyCaptureHint>
+    <SDS.Settings.HotkeyCancel>Cancel</SDS.Settings.HotkeyCancel>
+    <SDS.Settings.HotkeyConflict>This key is already used by "{0}"; both will respond.</SDS.Settings.HotkeyConflict>
+    <SDS.Settings.HotkeyDuplicate>This key is already used by the other super storage hotkey.</SDS.Settings.HotkeyDuplicate>
+    <SDS.Settings.HotkeyNoModifiers>Key combinations are not supported; press a single key.</SDS.Settings.HotkeyNoModifiers>
+    <SDS.Settings.HotkeyModifierOnly>Modifier keys cannot be bound alone; press a regular key.</SDS.Settings.HotkeyModifierOnly>
+    <SDS.Settings.HotkeyReserved>Enter is reserved for confirm and cannot be bound.</SDS.Settings.HotkeyReserved>
+    <SDS.Settings.HotkeyNote>In build mode both C and Q belong to vanilla; Q only takes priority when the sidebar is open and a row is selected. Hotkeys are stored in the vanilla keyboard settings and can also be changed under Options - Keyboard.</SDS.Settings.HotkeyNote>
+
+    <SDS.Window.HotkeyHint>Hotkeys: {0} toggle · {1} output · {2} use</SDS.Window.HotkeyHint>
+    <SDS.Window.CapacityBar>Categories {0}/{1}</SDS.Window.CapacityBar>
+    <SDS.Window.OutputButtonSelected>Output: {0}</SDS.Window.OutputButtonSelected>
+    <SDS.Window.UseButton>Use</SDS.Window.UseButton>
+
+    <SDS.Install.Title>Install: {0} (exactly 1)</SDS.Install.Title>
+    <SDS.Install.Records>Record (pick which material / quality to install):</SDS.Install.Records>
+    <SDS.Install.Confirm>Start placing</SDS.Install.Confirm>
+    <SDS.Install.ConfirmTip>Enter or middle mouse to confirm. Then place it like a vanilla install; right-click or ESC cancels without taking the item.</SDS.Install.ConfirmTip>
+
+    <SDS.Use.Title>Use: {0} (exactly 1)</SDS.Use.Title>
+    <SDS.Use.Records>Record (pick which material / quality to use):</SDS.Use.Records>
+    <SDS.Use.Confirm>Use</SDS.Use.Confirm>
+    <SDS.Use.ConfirmTip>Enter or middle mouse to confirm; ESC to cancel. Only 1 item is taken.</SDS.Use.ConfirmTip>
+    <SDS.Use.NoStock>That item is not in superdimensional storage.</SDS.Use.NoStock>
+    <SDS.Use.Unresolved>The def of "{0}" cannot be resolved right now (missing mod, renamed def, or XML load failure). The entry is kept and will recover automatically.</SDS.Use.Unresolved>
+    <SDS.Use.NotPawn>Pick a colonist (currently pointing at a building / the ground / an item).</SDS.Use.NotPawn>
+    <SDS.Use.NotEligible>That target cannot use items (it must be a humanlike pawn of the player colony).</SDS.Use.NotEligible>
+    <SDS.Use.NoPort>That pawn has no working superdimensional chip; it cannot take the item on the spot.</SDS.Use.NoPort>
+    <SDS.Use.NoPlace>Could not place the item at that pawn's feet (no free space around it).</SDS.Use.NoPlace>
+    <SDS.Use.NotUsable>That item cannot be used directly.</SDS.Use.NotUsable>
+    <SDS.Use.Blocked>Cannot use "{0}": {1}</SDS.Use.Blocked>
+    <SDS.Use.TaskJob>"{0}" is not a use entry (vanilla offered the job {1}); it was returned to superdimensional storage.</SDS.Use.TaskJob>
+    <SDS.Use.RefundFailed>Failed to return it to superdimensional storage; "{0}" was left on the ground.</SDS.Use.RefundFailed>
+
+</LanguageData>

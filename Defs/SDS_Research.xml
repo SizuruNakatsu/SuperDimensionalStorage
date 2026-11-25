@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <!-- 科技树（定稿 §十三）：归入独立类目「超维存储」。
+         第一项无任何前置依赖；后续每项依赖前一项。
+
+         注意：绝不要给这些科技加 ClassicStart / 任何玩家派系 startingResearchTags 里的标签。
+         原版 ResearchUtility.ApplyPlayerStartingResearch() 会在新档开局把命中的科技直接 FinishProject，
+         等于开局全部送完。 -->
+
+    <ResearchProjectDef>
+        <defName>SDS_BasicSuperStorage</defName>
+        <label>超维基础技术</label>
+        <description>初步认知到超维空间的存在，通过建造超维空间核心可锚定与超维空间的通道，让超维空间成为存储容器。</description>
+        <baseCost>100</baseCost>
+        <techLevel>Spacer</techLevel>
+        <tab>SDS_SuperStorage</tab>
+        <researchViewX>0</researchViewX>
+        <researchViewY>0</researchViewY>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef>
+        <defName>SDS_AdvancedSuperStorage</defName>
+        <label>超维高级技术</label>
+        <description>初步理解超维空间的通道技术，通过建造超维空间锚点可提升超维空间与边缘世界的物理接口数量。</description>
+        <baseCost>1000</baseCost>
+        <techLevel>Spacer</techLevel>
+        <tab>SDS_SuperStorage</tab>
+        <researchViewX>1</researchViewX>
+        <researchViewY>0</researchViewY>
+        <prerequisites>
+            <li>SDS_BasicSuperStorage</li>
+        </prerequisites>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef>
+        <defName>SDS_PrecisionSuperStorage</defName>
+        <label>超维精密技术</label>
+        <description>进一步理解超维空间的物理基础，通过建造超维空间稳固装置可提升超维空间的容量。研发链接超维空间植入体的基础型号，殖民者与超维空间核心同地图时可随时存取超维空间库存。</description>
+        <baseCost>3000</baseCost>
+        <techLevel>Spacer</techLevel>
+        <tab>SDS_SuperStorage</tab>
+        <researchViewX>2</researchViewX>
+        <researchViewY>0</researchViewY>
+        <prerequisites>
+            <li>SDS_AdvancedSuperStorage</li>
+        </prerequisites>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef>
+        <defName>SDS_AdvancedPrecisionSuperStorage</defName>
+        <label>超维高级精密技术</label>
+        <description>完全理解超维空间的性质，与超维空间的通道不再依赖于超维空间核心的锚定。研发链接超维空间植入体的高级型号，殖民者可突破地图边界随时随地取用超维空间库存并可在与其他殖民地贸易时直接调用超维空间库存。</description>
+        <baseCost>5000</baseCost>
+        <techLevel>Spacer</techLevel>
+        <tab>SDS_SuperStorage</tab>
+        <researchViewX>3</researchViewX>
+        <researchViewY>0</researchViewY>
+        <prerequisites>
+            <li>SDS_PrecisionSuperStorage</li>
+        </prerequisites>
+    </ResearchProjectDef>
+
+</Defs>

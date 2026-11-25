@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+    <SDS_MakeImplantA.label>make super dimensional basic chip</SDS_MakeImplantA.label>
+    <SDS_MakeImplantA.description>Make a super dimensional basic chip at a super dimensional core from 100 silver and 1 component.</SDS_MakeImplantA.description>
+    <SDS_MakeImplantA.jobString>Making super dimensional basic chip.</SDS_MakeImplantA.jobString>
+
+    <SDS_MakeImplantB.label>make super dimensional advanced chip</SDS_MakeImplantB.label>
+    <SDS_MakeImplantB.description>Make a super dimensional advanced chip at a super dimensional core from 100 gold and 1 advanced component.</SDS_MakeImplantB.description>
+    <SDS_MakeImplantB.jobString>Making super dimensional advanced chip.</SDS_MakeImplantB.jobString>
+
+</LanguageData>

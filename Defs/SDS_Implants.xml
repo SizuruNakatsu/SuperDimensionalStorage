@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <!--
+      ============================================================
+      植入体（本次范围：**只定义**）
+      ============================================================
+      定稿约束：本轮只定义"植入体是什么"（物品 + 植入状态 + 制造材料 + 贴图），
+      **不定义"怎么做"**，也**不实现**同地图 / 跨地图存取。
+
+      A —— 超维空间基础芯片：制造材料 100 银 + 1 零部件
+      B —— 超维空间高级芯片：制造材料 100 金 + 1 高级零部件
+
+      物品贴图：Textures/SuperDimensionalStorage/Item/Implant.png
+      说明：RimWorld 的 HediffDef 没有独立的"健康页签图标"字段——健康页签显示的是
+      `spawnThingOnRemoved` 那个物品的图标（也就是上面那张物品贴图）。
+
+      ⚠ 重要（实测踩坑）：本 repack 里 XML 引用【本 Mod 自己的类型】必须写全限定名
+      （SuperDimensionalStorage.XXX），只写短名会报
+      "Could not find a type named XXX" → 整个 ThingDef 加载失败（表现为"游戏里
+      没有芯片实体、配方产物找不到、spawnThingOnRemoved 交叉引用报错"）。
+      原版类型（RimWorld/Verse 命名空间）写短名没问题，例如 Class="CompProperties_Power"。
+      ============================================================
+    -->
+
+    <!-- 超维空间基础芯片（物品） -->
+    <ThingDef>
+        <defName>SDS_ImplantA</defName>
+        <label>超维空间基础芯片</label>
+        <description>可以让殖民者链接超维空间的植入体(基础型号)，植入后殖民者可随时在存在超维空间核心的地图上取用超维空间的库存。</description>
+        <thingClass>ThingWithComps</thingClass>
+        <!-- 物品类别必须显式写：ThingDef 没有基类继承时 category 默认为 None，
+             那样引擎不会把它当物品（存入规则 CanStoreDef 要求 ThingCategory.Item）。
+             这也曾导致"芯片没有实体"的观感。 -->
+        <category>Item</category>
+        <graphicData>
+            <texPath>SuperDimensionalStorage/Item/Implant</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <altitudeLayer>Item</altitudeLayer>
+        <selectable>true</selectable>
+        <!-- ⚠ 独立 ThingDef（不继承任何基类）必须显式补「物品标准属性」，否则原版不会把它当普通物品：
+             alwaysHaulable 默认 false → ThingDef.EverHaulable = alwaysHaulable || designateHaulable = false
+             → 原版搬运工作永远不会搬它（进不了仓库，也送不到超维空间端点去数字化）。
+             原版 ResourceBase（钢/零部件等的基类）正是靠 <alwaysHaulable>true</alwaysHaulable> 提供这一条。
+             resourceReadoutPriority 默认是 Uncounted（不上左上角资源汇总、CountAsResource=false），
+             物品应当与钢/零部件一样用 Middle。 -->
+        <alwaysHaulable>true</alwaysHaulable>
+        <resourceReadoutPriority>Middle</resourceReadoutPriority>
+        <stackLimit>1</stackLimit>
+        <statBases>
+            <Mass>0.5</Mass>
+            <Flammability>0</Flammability>
+            <DeteriorationRate>0</DeteriorationRate>
+            <Beauty>0</Beauty>
+        </statBases>
+        <!-- 物品筛选分类：与原版仿生体一致——category 仍是 Item（仓存/搬运规则不变），
+             只把 thingCategories 归到 BodyPartsBionic（物品 → 身体部件 → 仿生体）。
+             原版 BionicArm 等即：BodyPartBase 写 category=Item，子类只写 thingCategories=BodyPartsBionic。 -->
+        <thingCategories>
+            <li>BodyPartsBionic</li>
+        </thingCategories>
+        <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <!-- 右键使用即植入（不做安装手术）：复用原版 CompUsable + JobDriver_UseItem。
+                 文案由 SDS_CompUsable 覆盖为 Keyed（SDS.Chip.UseLabel），useLabel 只是占位。 -->
+            <li Class="CompProperties_Usable">
+                <compClass>SuperDimensionalStorage.SDS_CompUsable</compClass>
+                <useJob>UseItem</useJob>
+                <useLabel>Use {0_label}</useLabel>
+                <useDuration>180</useDuration>
+            </li>
+            <!-- 植入效果：基础芯片（不覆盖任何芯片，只有无芯片时可用）。
+                 安装部位 = 脑部（XML 写 Brain 作为意图说明；机械体由代码回退到 ArtificialBrain）。 -->
+            <li Class="SuperDimensionalStorage.SDS_CompProperties_InstallChip">
+                <hediffDef>SDS_ImplantHediffA</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <allowNonColonists>true</allowNonColonists>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <!-- 超维空间高级芯片（物品） -->
+    <ThingDef>
+        <defName>SDS_ImplantB</defName>
+        <label>超维空间高级芯片</label>
+        <description>可以让殖民者链接超维空间的植入体(高级型号)。植入后殖民者可随时跨地图取用超维空间的库存。</description>
+        <thingClass>ThingWithComps</thingClass>
+        <!-- 物品类别必须显式写：ThingDef 没有基类继承时 category 默认为 None，
+             那样引擎不会把它当物品（存入规则 CanStoreDef 要求 ThingCategory.Item）。
+             这也曾导致"芯片没有实体"的观感。 -->
+        <category>Item</category>
+        <graphicData>
+            <texPath>SuperDimensionalStorage/Item/Implant</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <altitudeLayer>Item</altitudeLayer>
+        <selectable>true</selectable>
+        <!-- ⚠ 独立 ThingDef（不继承任何基类）必须显式补「物品标准属性」，否则原版不会把它当普通物品：
+             alwaysHaulable 默认 false → ThingDef.EverHaulable = alwaysHaulable || designateHaulable = false
+             → 原版搬运工作永远不会搬它（进不了仓库，也送不到超维空间端点去数字化）。
+             原版 ResourceBase（钢/零部件等的基类）正是靠 <alwaysHaulable>true</alwaysHaulable> 提供这一条。
+             resourceReadoutPriority 默认是 Uncounted（不上左上角资源汇总、CountAsResource=false），
+             物品应当与钢/零部件一样用 Middle。 -->
+        <alwaysHaulable>true</alwaysHaulable>
+        <resourceReadoutPriority>Middle</resourceReadoutPriority>
+        <stackLimit>1</stackLimit>
+        <statBases>
+            <Mass>0.5</Mass>
+            <Flammability>0</Flammability>
+            <DeteriorationRate>0</DeteriorationRate>
+            <Beauty>0</Beauty>
+        </statBases>
+        <!-- 物品筛选分类：同基础芯片，归到 BodyPartsBionic（物品 → 身体部件 → 仿生体）。 -->
+        <thingCategories>
+            <li>BodyPartsBionic</li>
+        </thingCategories>
+        <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="CompProperties_Usable">
+                <compClass>SuperDimensionalStorage.SDS_CompUsable</compClass>
+                <useJob>UseItem</useJob>
+                <useLabel>Use {0_label}</useLabel>
+                <useDuration>180</useDuration>
+            </li>
+            <!-- 植入效果：高级芯片。可在「无芯片」或「已装基础芯片」时使用；
+                 replacedHediffDef = 基础芯片，表示安装时先摘掉已装的基础芯片（高级覆盖基础）。
+                 已装高级芯片时两个芯片都不能再装。 -->
+            <li Class="SuperDimensionalStorage.SDS_CompProperties_InstallChip">
+                <hediffDef>SDS_ImplantHediffB</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <allowNonColonists>true</allowNonColonists>
+                <replacedHediffDef>SDS_ImplantHediffA</replacedHediffDef>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <!-- 超维空间基础芯片的植入状态。
+         只定义"植入体本身"：去掉植入体（手术取出 / 死亡）时掉回对应物品。
+         安装部位（defaultInstallPart）、安装手术、效果（hediffStages / 属性加成）等属于"怎么做"，本轮不定义。 -->
+    <HediffDef>
+        <defName>SDS_ImplantHediffA</defName>
+        <label>超维空间基础芯片</label>
+        <description>已植入的超维空间链接芯片基础型号。同超维空间核心同地图时，殖民者及附属机械体可随时取用超维空间的库存。</description>
+        <hediffClass>Hediff_Implant</hediffClass>
+        <countsAsAddedPartOrImplant>true</countsAsAddedPartOrImplant>
+        <!-- 原版 HediffDef.isBad 默认 true（即"负面健康状态"）：不显式改写时，
+             医疗类能力（如治疗机械液 FixWorstHealthCondition）会把它列为可清除目标并删掉。
+             芯片是永久植入体，必须显式标为非负面。 -->
+        <isBad>false</isBad>
+        <spawnThingOnRemoved>SDS_ImplantA</spawnThingOnRemoved>
+        <initialSeverity>1</initialSeverity>
+    </HediffDef>
+
+    <!-- 超维空间高级芯片的植入状态 -->
+    <HediffDef>
+        <defName>SDS_ImplantHediffB</defName>
+        <label>超维空间高级芯片</label>
+        <description>已植入的超维空间链接芯片高级型号。只要超维空间可用，殖民者及附属机械体就可随时跨地图取用超维空间的库存。</description>
+        <hediffClass>Hediff_Implant</hediffClass>
+        <countsAsAddedPartOrImplant>true</countsAsAddedPartOrImplant>
+        <!-- 同基础芯片：显式非负面，避免被当成负面健康状态清除。 -->
+        <isBad>false</isBad>
+        <spawnThingOnRemoved>SDS_ImplantB</spawnThingOnRemoved>
+        <initialSeverity>1</initialSeverity>
+    </HediffDef>
+
+    <!-- 制造：超维空间基础芯片（100 银 + 1 零部件）。
+         制造台 = 「超维空间核心」SDS_BuildingCore，这是**唯一**制作途径（原版精密装配台已移除）。
+         核心的 thingClass 是 Building_WorkTable 的子类，并配了 WorkGiverDef `SDS_DoBillsCore`
+         （fixedBillGiverDefs = SDS_BuildingCore），否则原版 WorkGiver_DoBill 不会来核心干活。 -->
+    <RecipeDef>
+        <defName>SDS_MakeImplantA</defName>
+        <label>制造超维空间基础芯片</label>
+        <description>在超维空间核心上用 100 银与 1 个零部件制造超维空间基础芯片。</description>
+        <jobString>正在制造超维空间基础芯片。</jobString>
+        <workAmount>120</workAmount>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Silver</li>
+                    </thingDefs>
+                </filter>
+                <!-- ⚠ 银是 smallVolume 的 stuff（VolumePerUnit = 0.1）：原版口径下 XML 的 <count>
+                     是"以 10 个为单位"的（IngredientCount.CountRequiredOfFor = count / ValuePerUnitOf）。
+                     要 100 银必须写 10；写 100 会被算成 1000 银（实测用户报的就是这个）。
+                     原版同款写法参照 Make_ComponentSpacer 的 <li>Gold</li><count>0.3</count>（=3 金）。 -->
+                <count>10</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentIndustrial</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+        </ingredients>
+        <!-- 原版标准的固定原料清单：缺它时 tooltip / 信息卡的 CountFor 口径会漏算小体积换算，
+             出现"清单栏显示 1000、tooltip 显示 100"的不一致。 -->
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Silver</li>
+                <li>ComponentIndustrial</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <SDS_ImplantA>1</SDS_ImplantA>
+        </products>
+        <!-- 定稿 §十三.3：超维精密技术解锁「超维空间稳固装置 + 超维空间基础芯片」。 -->
+        <researchPrerequisite>SDS_PrecisionSuperStorage</researchPrerequisite>
+        <recipeUsers>
+            <li>SDS_BuildingCore</li>
+        </recipeUsers>
+    </RecipeDef>
+
+    <!-- 制造：超维空间高级芯片（100 金 + 1 高级零部件） -->
+    <RecipeDef>
+        <defName>SDS_MakeImplantB</defName>
+        <label>制造超维空间高级芯片</label>
+        <description>在超维空间核心上用 100 金与 1 个高级零部件制造超维空间高级芯片。</description>
+        <jobString>正在制造超维空间高级芯片。</jobString>
+        <workAmount>240</workAmount>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Gold</li>
+                    </thingDefs>
+                </filter>
+                <!-- 金同样是 smallVolume 的 stuff（VolumePerUnit = 0.1）：10 = 100 金（同 A 的说明）。 -->
+                <count>10</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentSpacer</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Gold</li>
+                <li>ComponentSpacer</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <SDS_ImplantB>1</SDS_ImplantB>
+        </products>
+        <!-- 定稿 §十三.4：超维高级精密技术解锁「超维空间高级芯片 + 跨地图交易」。 -->
+        <researchPrerequisite>SDS_AdvancedPrecisionSuperStorage</researchPrerequisite>
+        <recipeUsers>
+            <li>SDS_BuildingCore</li>
+        </recipeUsers>
+    </RecipeDef>
+
+</Defs>

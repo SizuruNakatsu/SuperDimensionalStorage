@@ -1,0 +1,35 @@
+﻿# SDS.Core 公开面基线（派生工件，勿手改）
+# 生成：Tools/DumpPublicSurface.ps1 -Write；校验：Tools/DumpPublicSurface.ps1 -Check
+# 差异即公开面变更：按《设计原则.md》§三 判定 L1 / L2 / L3。
+[type] ISDS_LedgerHost :: public interface ISDS_LedgerHost : ISDS_LedgerRead
+[type] ISDS_LedgerRead :: public interface ISDS_LedgerRead
+[type] SDS_Core :: public static class SDS_Core
+ISDS_LedgerHost :: void ExposeData();
+ISDS_LedgerHost :: void Tick();
+ISDS_LedgerRead :: bool IsForbidden(SDS_StockKey key);
+ISDS_LedgerRead :: bool IsPreserved(Thing thing);
+ISDS_LedgerRead :: bool IsPreservedThingId(int thingID);
+ISDS_LedgerRead :: int FilterVersion
+ISDS_LedgerRead :: int ReservationVersion
+ISDS_LedgerRead :: int StockVersion
+ISDS_LedgerRead :: List<SDS_StockEntry> PreservedSnapshot();
+ISDS_LedgerRead :: List<SDS_StockEntry> Snapshot(int max);
+ISDS_LedgerRead :: List<SDS_StockEntry> UnresolvedSnapshot();
+ISDS_LedgerRead :: long GetCount(SDS_StockKey key);
+ISDS_LedgerRead :: long GetPreservedCount(SDS_StockKey key);
+ISDS_LedgerRead :: long GetReserved(SDS_StockKey key);
+ISDS_LedgerRead :: void AppendPreservedThings(List<Thing> into);
+ISDS_LedgerRead :: void CopyKeys(List<SDS_StockKey> into);
+ISDS_LedgerRead :: void CopyKeysForDef(ThingDef def, List<SDS_StockKey> into);
+ISDS_LedgerRead :: void CopyPreservedKeysForDef(ThingDef def, List<SDS_StockKey> into);
+SDS_Core :: public static bool SetForbidden(SDS_StockKey key, bool forbidden)
+SDS_Core :: public static ISDS_LedgerHost CreateLedger()
+SDS_Core :: public static ISDS_LedgerRead Ledger
+SDS_Core :: public static long UsedCapacity
+SDS_Core :: public static void ApplyQuality(Thing thing, int qualityInt)
+SDS_Core :: public static void ApplyVitals(Thing thing, float hitPoints, float rotProgress)
+SDS_Core :: public static void Attach(ISDS_LedgerHost value)
+SDS_Core :: public static void AuditReservations(Func<int, bool> ownerAlive)
+SDS_Core :: public static void NotifyCapacitySettingsChanged()
+SDS_Core :: public static void NotifyDepositFilterChanged()
+SDS_Core :: public static void RegisterAll()
